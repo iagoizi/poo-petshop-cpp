@@ -1,12 +1,10 @@
 #ifndef DATA_H
 #define DATA_H
-#include <stdio.h>
-#include <iostream>
-#include "stdlib.h"
-#include <stdio.h>
-#include <ctime>
-using namespace std;
+
+#include "lib.hpp"
+
 class Data{
+    //private:
     int dia, mes, ano, hora, minuto;
 
 public:
