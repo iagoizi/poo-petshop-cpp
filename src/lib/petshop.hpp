@@ -7,6 +7,7 @@ class PetShop
 {
     //private:
     string nome;
+    Usuario sessaoAtual;
     vector<Usuario> usuario;
     vector<Cliente> clientes;
     vector<Conta> conta;
@@ -32,6 +33,9 @@ public:
     vector<Compra> getVendas();
 
     void setNome(string);
+
+    bool login(string usuario, string senha);
+    void logOut();
 };
 
 #endif
