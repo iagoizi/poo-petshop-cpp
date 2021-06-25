@@ -3,14 +3,15 @@
 
 #include "lib.hpp"
 
-class Compra{
+class Compra
+{
     //private:
-    char descricao[M];
+    char descricao[M10];
     Data data;
     double preco;
-    
-    public:
-    Compra(string descricao="", Data data=Data(), double preco=0.0);
+
+public:
+    Compra(string descricao, double preco, Data data = Data());
     ~Compra();
     string getDescricao();
     Data getData();

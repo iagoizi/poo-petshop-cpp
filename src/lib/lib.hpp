@@ -2,6 +2,7 @@
 #define LIB_H
 
 #define M 51
+#define M10 501
 #define DEFAULT_PATH string("../dados/")
 #define CONTAS_PETSHOP DEFAULT_PATH + string("contas.dat")
 
@@ -17,16 +18,17 @@
 #include <vector>
 using namespace std;
 
-#include "administrador.hpp"
-#include "compra.hpp"
 #include "data.hpp"
-#include "conta.hpp" 
+#include "compra.hpp"
+#include "conta.hpp"
+#include "servico.hpp"
 #include "ordemservico.hpp"
+#include "produto.hpp"
+#include "cliente.hpp"
 #include "usuario.hpp"
 #include "vendedor.hpp"
 #include "veterinario.hpp"
-#include "cliente.hpp"
-#include "produto.hpp"
-#include "servico.hpp"
+#include "administrador.hpp"
+#include "petshop.hpp"
 
 #endif

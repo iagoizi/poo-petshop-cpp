@@ -1,6 +1,6 @@
 All:
-	g++ *.cpp -o main
+	 g++ -Wall -o main main.cpp lib/*.cpp
 clean:
-	rm -f *.o main
+	rm -f lib/*.o main
 run:
 	./main

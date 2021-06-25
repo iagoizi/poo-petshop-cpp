@@ -3,16 +3,17 @@
 
 #include "lib.hpp"
 
-class OrdemServico{
+class OrdemServico
+{
 
 protected:
     char servico[M];
     char cliente[M];
-    Data data; 
+    Data data;
     char observacao[M];
 
 public:
-    OrdemServico(string servico= "", string cliente = "", Data data = 0, string obs = "");
+    OrdemServico(string servico = "", string cliente = "", Data data = 0, string obs = "");
     ~OrdemServico();
 
     string getServico();
@@ -25,6 +26,8 @@ public:
     void setData(Data);
     void setObservacao(string);
 
+    /*Se as ordens de serviço tiverem mesmo cliente, serviço e data, eles são iguais*/
+    bool operator==(OrdemServico);
 };
 
 #endif
