@@ -7,22 +7,22 @@ class OrdemServico
 {
 
 protected:
-    char servico[M];
-    char cliente[M];
+    Servico servico;
+    Cliente cliente;
     Data data;
     char observacao[M];
 
 public:
-    OrdemServico(string servico = "", string cliente = "", Data data = 0, string obs = "");
+    OrdemServico(Servico servico = {}, Cliente cliente = {}, Data data = 0, string observacao = "");
     ~OrdemServico();
 
-    string getServico();
-    string getCliente();
-    string getData();
+    Servico getServico();
+    Cliente getCliente();
+    Data getData();
     string getObservacao();
 
-    void setServico(string);
-    void setCliente(string);
+    void setServico(Servico);
+    void setCliente(Cliente);
     void setData(Data);
     void setObservacao(string);
 

@@ -15,8 +15,8 @@ class Cliente
     vector<Compra> compras;
 
 public:
-    Cliente(string nome, string tipoAnimal, string nomePet, string endereco, int telefone, long cpf,
-            vector<Compra> compras = {});
+    Cliente(string nome = "", string tipoAnimal = "", string nomePet = "", string endereco = "", int telefone = 0, 
+    long cpf = 0, vector<Compra> compras = {});
     ~Cliente();
 
     void setNome(string nome);

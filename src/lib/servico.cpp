@@ -9,10 +9,10 @@ Servico::~Servico() {}
 
 void Servico::setNome(string nome)
 {
-    const char *novoNome = nome.data();
-    int length = nome.size();
+    const char *novoNome = nome.data(); //Pegar um vetor de char como string
+    int length = nome.size(); //Pegar o tamanho do vetor 
     length = (length < M ? length : M - 1);
-    strncpy(this->nome, novoNome, length);
+    strncpy(this->nome, novoNome, length); //Copiar a string para outra variável
     this->nome[length] = '\0';
 }
 void Servico::setPreco(double preco)
