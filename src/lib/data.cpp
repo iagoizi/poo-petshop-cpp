@@ -1,7 +1,9 @@
 #include "data.hpp"
 
 Data::Data(int dia, int mes, int ano, int hora, int minuto) : dia(dia), mes(mes), ano(ano), hora(hora),minuto(minuto){} 
+
 Data::~Data(){}
+
 int Data::getDia(){
     return this->dia;
 }
