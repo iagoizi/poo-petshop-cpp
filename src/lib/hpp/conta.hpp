@@ -23,5 +23,6 @@ public:
     void setDataVencimento(Data data);
     void setValor(double);
     void pagar();
+    friend ostream &operator<<(ostream &os, const Conta &conta);
 };
 #endif

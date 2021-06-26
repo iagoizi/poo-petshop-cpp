@@ -20,5 +20,6 @@ public:
     void setData(Data data);
     void setPreco(double);
     void pagar();
+    friend ostream &operator<<(ostream &os, const Compra &compra);
 };
 #endif

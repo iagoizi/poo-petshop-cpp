@@ -3,7 +3,8 @@
 
 #include "lib.hpp"
 
-class Data{
+class Data
+{
     //private:
     int dia, mes, ano, hora, minuto;
 
@@ -23,6 +24,7 @@ public:
     int getHora();
     int getMinuto();
     bool operator==(Data);
+    friend ostream &operator<<(ostream &os, const Data &data);
     void now();
 };
 #endif

@@ -8,15 +8,15 @@ class PetShop
     //private:
     string nome;
     Usuario sessaoAtual;
-    vector <Usuario> usuario;
-    vector <Cliente> clientes;
-    vector <Conta> conta;
-    vector <Produto> produto;
-    vector <Servico> servico;
-    vector <OrdemServico> ordemservicos;
-    vector <OrdemServico> historicoServicos;
-    vector <Compra> compras;
-    vector <Compra> vendas;
+    vector<Usuario> usuario;
+    vector<Cliente> clientes;
+    vector<Conta> conta;
+    vector<Produto> produto;
+    vector<Servico> servico;
+    vector<OrdemServico> ordemservicos;
+    vector<OrdemServico> historicoServicos;
+    vector<Compra> compras;
+    vector<Compra> vendas;
 
 public:
     PetShop();

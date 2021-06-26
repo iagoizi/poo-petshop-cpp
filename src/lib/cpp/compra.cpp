@@ -1,4 +1,4 @@
-#include "compra.hpp"
+#include "../hpp/compra.hpp"
 
 Compra::Compra(string descricao, double preco, Data data)
 {
@@ -6,9 +6,8 @@ Compra::Compra(string descricao, double preco, Data data)
     setPreco(preco);
     setData(data);
 }
-Compra::~Compra()
-{
-}
+Compra::~Compra() {}
+
 string Compra::getDescricao()
 {
     return this->descricao;
@@ -40,4 +39,10 @@ void Compra::setPreco(double preco)
 void Compra::pagar()
 {
     this->data.now();
+}
+
+ostream &operator<<(ostream &os, const Compra &compra)
+{
+    os << compra.data << " - R$" << compra.preco << " - " << compra.descricao;
+    return os;
 }

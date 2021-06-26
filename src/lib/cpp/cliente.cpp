@@ -1,4 +1,4 @@
-#include "cliente.hpp"
+#include "../hpp/cliente.hpp"
 Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco, int telefone, long cpf,
                  vector<Compra> compras)
 {
@@ -87,11 +87,5 @@ vector<Compra> Cliente::getCompras()
 //Um cliente é o mesmo quando o cpf é igual
 bool Cliente::operator==(Cliente cliente)
 {
-    return                             /*this->nome == cliente.getNome() &&
-           this->nomePet == cliente.getNomePet() &&
-           this->tipoAnimal == cliente.getTipoAnimal() &&
-           this->endereco == cliente.getEndereco() &&
-           this->telefone == cliente.getTelefone() &&*/
-        this->cpf == cliente.getCpf(); /*&&
-           this->compras == cliente.getCompras();*/
+    return this->cpf == cliente.getCpf();
 }

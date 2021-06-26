@@ -1,12 +1,12 @@
-#include "conta.hpp"
-Conta::Conta(std::string descricao, Data dataVencimento, Data dataPagamento, double valor)
+#include "../hpp/conta.hpp"
+Conta::Conta(string descricao, Data dataVencimento, Data dataPagamento, double valor)
 {
     setDescricao(descricao);
     setDataVencimento(dataVencimento);
     setDataPagamento(dataPagamento);
     setValor(valor);
 }
-Conta::~Conta(){}
+Conta::~Conta() {}
 
 std::string Conta::getDescricao()
 {
@@ -48,4 +48,10 @@ void Conta::setValor(double valor)
 void Conta::pagar()
 {
     this->dataPagamento.now();
+}
+
+ostream &operator<<(ostream &os, const Conta &conta)
+{
+    os << "Vencimento:" << conta.dataVencimento << "Pagamento:" << conta.dataPagamento << " - R$" << conta.valor << " - " << conta.descricao;
+    return os;
 }

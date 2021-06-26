@@ -1,4 +1,4 @@
-#include "servico.hpp"
+#include "../hpp/servico.hpp"
 Servico::Servico(string nome, double preco, long id)
 {
     setNome(nome);
@@ -10,7 +10,7 @@ Servico::~Servico() {}
 void Servico::setNome(string nome)
 {
     const char *novoNome = nome.data(); //Pegar um vetor de char como string
-    int length = nome.size(); //Pegar o tamanho do vetor 
+    int length = nome.size();           //Pegar o tamanho do vetor
     length = (length < M ? length : M - 1);
     strncpy(this->nome, novoNome, length); //Copiar a string para outra variável
     this->nome[length] = '\0';
@@ -36,10 +36,8 @@ long Servico::getId()
 {
     return this->id;
 }
-
+// Serviços iguais, possuem o mesmo ID
 bool Servico::operator==(Servico servico)
 {
-    return this->nome == servico.getNome() &&
-           this->preco == servico.getPreco() &&
-           this->id == servico.getId();
+    return this->id == servico.getId();
 }
