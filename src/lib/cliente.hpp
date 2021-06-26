@@ -7,28 +7,28 @@ class Cliente
 {
     //private:
     char nome[M];
-    char tipo_animal[M];
-    char nome_pet[M];
+    char tipoAnimal[M];
+    char nomePet[M];
     char endereco[M10];
     int telefone;
     long cpf;
     vector<Compra> compras;
 
 public:
-    Cliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf,
+    Cliente(string nome, string tipoAnimal, string nomePet, string endereco, int telefone, long cpf,
             vector<Compra> compras = {});
     ~Cliente();
 
     void setNome(string nome);
-    void setTipo_Animal(string tipo_animal);
-    void setNome_Pet(string nome_pet);
+    void setTipoAnimal(string tipoAnimal);
+    void setNomePet(string nomePet);
     void setEndereco(string endereco);
     void setTelefone(int telefone);
     void setCpf(long cpf);
     void setCompras(vector<Compra> compras);
     string getNome();
-    string getTipo_animal();
-    string getNome_pet();
+    string getTipoAnimal();
+    string getNomePet();
     string getEndereco();
     int getTelefone();
     long getCpf();
