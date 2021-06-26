@@ -6,9 +6,8 @@ Conta::Conta(std::string descricao, Data dataVencimento, Data dataPagamento, dou
     setDataPagamento(dataPagamento);
     setValor(valor);
 }
-Conta::~Conta()
-{
-}
+Conta::~Conta(){}
+
 std::string Conta::getDescricao()
 {
     return this->descricao;

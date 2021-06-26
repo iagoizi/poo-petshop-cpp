@@ -1,4 +1,5 @@
 #include "produto.hpp"
+
 Produto::Produto(string nome, double preco, int quantidade, long id)
 {
     setNome(nome);
