@@ -30,7 +30,7 @@ public:
     string getTipo_animal();
     string getNome_pet();
     string getEndereco();
-    int getTelefonr();
+    int getTelefone();
     long getCpf();
     vector<Compra> getCompras();
 
