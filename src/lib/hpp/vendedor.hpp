@@ -12,11 +12,11 @@ public:
     ~Vendedor();
 
     /*Cadastra um novo cliente, o adicionando no vetor de clientes do petshop*/
-    void Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf, vector<Compra> compras);
+    void cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf, vector<Compra> compras);
     /*Registra uma venda de produtos para um determinado cliente*/
-    void vendaProdutos(Cliente cliente, vector<Produto> produto);
+    void vendaProduto(Cliente& cliente, vector<Produto> produtos);
     /*Registra uma venda de serviços para um determinado cliente*/
-    void vendaServico(Cliente cliente, vector<Servico> servico);
+    void vendaServico(Cliente cliente, vector<Servico> servico, Data dataServico);
 };
 
 #endif

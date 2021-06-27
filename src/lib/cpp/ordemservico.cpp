@@ -63,7 +63,8 @@ bool OrdemServico::operator==(OrdemServico comp)
            this->cliente == comp.getCliente();
 }
 
-ostream &operator<<(ostream &os, const OrdemServico &ordem){
-    os << ordem.
+ostream &operator<<(ostream &os, OrdemServico &ordem)
+{
+    os << ordem.data << " " << "[" << ordem.cliente.getNome() << "]" << ordem.servico << "(" << ordem.observacao << ")";
     return os;
 }

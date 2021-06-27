@@ -24,5 +24,6 @@ public:
 
     /*Se os serviços tiverem mesmo id, são iguais*/
     bool operator==(Servico);
+    friend ostream &operator<<(ostream &os, const Servico &servico);
 };
 #endif

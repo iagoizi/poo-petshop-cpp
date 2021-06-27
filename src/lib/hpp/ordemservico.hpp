@@ -28,7 +28,7 @@ public:
 
     /*Se as ordens de serviço tiverem mesmo cliente, serviço e data, eles são iguais*/
     bool operator==(OrdemServico);
-    friend ostream &operator<<(ostream &os, const OrdemServico &ordem);
+    friend ostream &operator<<(ostream &os, OrdemServico &ordem);
 };
 
 #endif

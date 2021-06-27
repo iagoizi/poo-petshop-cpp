@@ -1,4 +1,5 @@
 #include "../hpp/cliente.hpp"
+
 Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco, int telefone, long cpf,
                  vector<Compra> compras)
 {
@@ -10,6 +11,7 @@ Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco
     setCpf(cpf);
     setCompras(compras);
 }
+
 Cliente::~Cliente() {}
 
 void Cliente::setNome(string nome)
@@ -80,7 +82,7 @@ long Cliente::getCpf()
 {
     return this->cpf;
 }
-vector<Compra> Cliente::getCompras()
+vector<Compra>& Cliente::getCompras()
 {
     return this->compras;
 }
@@ -88,4 +90,17 @@ vector<Compra> Cliente::getCompras()
 bool Cliente::operator==(Cliente cliente)
 {
     return this->cpf == cliente.getCpf();
+}
+
+ostream &operator<<(ostream &out, const Cliente &cliente){
+    out << "Cliente: " << cliente.nome << endl
+        << "CPF: " << cliente.cpf << endl
+        << "Endereço: " << cliente.endereco << endl
+        << "Telefone: " << cliente.telefone << endl
+        << "Pet: " << cliente.nomePet << endl
+        << "Tipo do pet: " << cliente.tipoAnimal << endl
+        << "Compras: " << endl;
+        for(auto compra : cliente.compras)
+            out << compra << endl;
+    return out;
 }

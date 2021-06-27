@@ -32,9 +32,10 @@ public:
     string getEndereco();
     int getTelefone();
     long getCpf();
-    vector<Compra> getCompras();
+    vector<Compra>& getCompras();
 
     /*Se os clientes tiverem o mesmo cpf, são o mesmo cliente*/
     bool operator==(Cliente);
+    friend ostream &operator<<(ostream &out, const Cliente &cliente);
 };
 #endif

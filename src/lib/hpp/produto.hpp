@@ -26,5 +26,6 @@ public:
 
     /*Se os produtos tiverem mesmo id, são iguais*/
     bool operator==(Produto);
+    friend ostream &operator<<(ostream &os, const Produto &produto);
 };
 #endif

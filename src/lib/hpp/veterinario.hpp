@@ -12,7 +12,7 @@ public:
     ~Veterinario();
 
     /*Registra o tratamento recomendado e move o serviço para o histórico*/
-    void registrarTratamento(OrdemServico ordem, string tratamento);
+    void registrarTratamento(OrdemServico& ordem, string tratamento);
     
     /*Busca uma ordem de servico a partir do Cliente e da data marcada*/
     OrdemServico buscarOrdemServico(Cliente cliente, Data dataAgendada);

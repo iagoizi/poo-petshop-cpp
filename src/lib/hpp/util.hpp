@@ -1,3 +1,3 @@
 #include "lib.hpp"
 
-void stringToConstChar(string nomeString);
+void stringToConstChar(char *novoLocal, string nomeString);

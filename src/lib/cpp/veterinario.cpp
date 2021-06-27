@@ -6,7 +6,7 @@ Veterinario::Veterinario(PetShop petshop, string nome, string usuario, string se
 
 Veterinario::~Veterinario(){};
 
-void Veterinario::registrarTratamento(OrdemServico ordem, string tratamento)
+void Veterinario::registrarTratamento(OrdemServico& ordem, string tratamento)
 {
     //Acessar ordem de servico e usar set observacao
     ordem.setObservacao(tratamento);
@@ -17,14 +17,18 @@ OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada)
     
     return this->getNome() == cliente.getNome();
 
+    for (vector<OrdemServicos>::iterator i = this->petshop.getOrdensServicos().begin(); i != this->petshop.getOrdemServicos().end(); i++)
+    {
+        if ((*i).getCliente() == cliente && (*i).getData() == dataAgendada)
+            return *i;
+    }
+    return {};
 }
-
 */
 
-/*
+
 Cliente Veterinario::buscarCadastro(long cpf)
 {
-
     for (vector<Cliente>::iterator i = this->petshop.getClientes().begin(); i != this->petshop.getClientes().end(); i++)
     {
         if ((*i).getCpf() == cpf)
@@ -32,20 +36,10 @@ Cliente Veterinario::buscarCadastro(long cpf)
     }
     return {};
 }
-*/
 
 void Veterinario::listarOrdemServico()
-{
-
-    /*for (vector<OrdemServico>::iterator i = petshop.ordemservicos.begin(); i != petshop.ordemservicos.end(); i++){
-        cout << *i << endl;
-    }
-    */
-
-    
-    for (auto listaServicos : petshop.ordemservicos)
-    {
+{   
+    for (auto listaServicos : petshop.getOrdemServico()){
         cout << listaServicos << endl;
     }
-    
 }

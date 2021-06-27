@@ -1,10 +1,12 @@
 #include "../hpp/servico.hpp"
+
 Servico::Servico(string nome, double preco, long id)
 {
     setNome(nome);
     setPreco(preco);
     setId(id);
 }
+
 Servico::~Servico() {}
 
 void Servico::setNome(string nome)
@@ -40,4 +42,9 @@ long Servico::getId()
 bool Servico::operator==(Servico servico)
 {
     return this->id == servico.getId();
+}
+
+ostream &operator<<(ostream &os, const Servico &servico){
+    os << servico.id << " - " << servico.nome << "- R$" << servico.preco;
+    return os;
 }
