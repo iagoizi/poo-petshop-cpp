@@ -26,6 +26,11 @@ void Produto::setId(long id)
     this->id = id;
 }
 
+void Produto::setQuantidade(int quantidade)
+{
+    this->quantidade = quantidade;
+}
+
 string Produto::getNome()
 {
     return this->nome;
@@ -39,6 +44,11 @@ long Produto::getId()
     return this->id;
 }
 
+int Produto::getQuantidade()
+{
+    return this->quantidade;
+}
+
 bool Produto::operator==(Produto produto)
 {
     return this->nome == produto.getNome() &&
@@ -46,7 +56,8 @@ bool Produto::operator==(Produto produto)
            this->quantidade == produto.getQuantidade() &&
            this->id == produto.getId();
 }
-ostream &operator<<(ostream &os, const Produto &produto){
+ostream &operator<<(ostream &os, const Produto &produto)
+{
     os << produto.id << " - " << produto.nome << "- R$" << produto.preco;
     return os;
 }
