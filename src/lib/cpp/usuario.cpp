@@ -1,6 +1,7 @@
 #include "../hpp/usuario.hpp"
+#include "../hpp/petshop.hpp"
 
-Usuario::Usuario(PetShop petshop, string nome, int cargo, string usuario, string senha, double salario)
+Usuario::Usuario(PetShop *petshop, string nome, int cargo, string usuario, string senha, double salario)
 {
     setNome(nome);
     setCargo(cargo);

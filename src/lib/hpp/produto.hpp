@@ -2,6 +2,9 @@
 #define PRODUTO_H
 
 #include "lib.hpp"
+#include <string>
+#include <string.h>
+using namespace std;
 
 class Produto
 {

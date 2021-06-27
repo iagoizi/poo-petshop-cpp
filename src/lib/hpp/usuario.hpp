@@ -1,12 +1,12 @@
 #ifndef USUARIO_HPP
 #define USUARIO_HPP
 
-#include "lib.hpp"
-
 #define ADMINISTRADOR 0
 #define VENDEDOR 1
 #define VETERINARIO 2
 
+#include "lib.hpp"
+class PetShop;
 class Usuario
 {
 
@@ -16,11 +16,11 @@ protected:
     char usuario[M];
     char senha[M];
     double salario;
-    PetShop petshop;
+    PetShop *petshop;
 
 public:
     /*Todos os campos são obrigatórios com exceção do salário*/
-    Usuario(PetShop petshop, string nome, int cargo, string usuario, string senha, double salario = 0.0);
+    Usuario(PetShop *petshop, string nome, int cargo, string usuario, string senha, double salario = 0.0);
     ~Usuario();
     string getNome();
     int getCargo();

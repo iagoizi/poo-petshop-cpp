@@ -2,6 +2,7 @@
 #define CLIENTE_H
 
 #include "lib.hpp"
+#include "compra.hpp"
 
 class Cliente
 {
@@ -15,8 +16,8 @@ class Cliente
     vector<Compra> compras;
 
 public:
-    Cliente(string nome = "", string tipoAnimal = "", string nomePet = "", string endereco = "", int telefone = 0, 
-    long cpf = 0, vector<Compra> compras = {});
+    Cliente(string nome = "", string tipoAnimal = "", string nomePet = "", string endereco = "", int telefone = 0,
+            long cpf = 0, vector<Compra> compras = {});
     ~Cliente();
 
     void setNome(string nome);
@@ -32,7 +33,7 @@ public:
     string getEndereco();
     int getTelefone();
     long getCpf();
-    vector<Compra>& getCompras();
+    vector<Compra> &getCompras();
 
     /*Se os clientes tiverem o mesmo cpf, são o mesmo cliente*/
     bool operator==(Cliente);

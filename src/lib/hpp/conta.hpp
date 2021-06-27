@@ -2,6 +2,7 @@
 #define CONTA_H
 
 #include "lib.hpp"
+#include "data.hpp"
 
 class Conta
 {

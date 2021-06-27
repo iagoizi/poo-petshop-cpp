@@ -1,73 +1,66 @@
+#include "../hpp/usuario.hpp"
 #include "../hpp/petshop.hpp"
-/*
-PetShop::PetShop(string nome, Usuario sessaoAtual, vector<Usuario> usuario, vector<Cliente> clientes,
-    vector<Conta> conta, vector<Produto> produto, vector<Servico> servico, vector<OrdemServico> ordemservicos,
-    vector<OrdemServico> historicoServicos, vector<Compra> compras, vector<Compra> vendas){
 
-        setNome(nome);
-        setUsuario(sessaoAtual);
-        setUsuarios(usuario);
-        setClientes(clientes);
-        setContas(conta);
-        setProdutos(produto);
-        setServicos(servico);
-        setOrdensServicos(ordemservicos);
-        setHistoricoServicos(historicoServicos);
-        setCompras(compras);
-        setVendas(vendas);
-    }
-
-PetShop::~PetShop(){}
-
-
-vector<Usuario> PetShop::getUsuarios(){
-    
+PetShop::PetShop()
+{
 }
 
-vector<Cliente> PetShop::getClientes(){
+PetShop::~PetShop() {}
 
+vector<Usuario> &PetShop::getUsuarios()
+{
+    return this->usuario;
 }
 
-vector<Conta> PetShop::getContas(){
-
+vector<Cliente> &PetShop::getClientes()
+{
+    return this->clientes;
 }
 
-vector<Produto> PetShop::getProdutos(){
-
+vector<Conta> &PetShop::getContas()
+{
+    return this->conta;
 }
 
-vector<Servico> PetShop::getServicos(){
-
+vector<Produto> &PetShop::getProdutos()
+{
+    return this->produto;
 }
 
-vector<OrdemServico> PetShop::getOrdemServico(){
-
+vector<Servico> &PetShop::getServicos()
+{
+    return this->servico;
 }
 
-vector<OrdemServico> PetShop::getHistoricoServico(){
-
+vector<OrdemServico> &PetShop::getOrdemServico()
+{
+    return this->ordemservicos;
 }
 
-vector<Compra> PetShop::getCompras(){
-
+vector<OrdemServico> &PetShop::getHistoricoServico()
+{
+    return this->historicoServicos;
 }
 
-vector<Compra> PetShop::getVendas(){
-
+vector<Compra> &PetShop::getCompras()
+{
+    return this->compras;
 }
 
-void PetShop::setNome(string nome){
-    //ler do arquivo ?
-    this->nome = nome;
+vector<Compra> &PetShop::getVendas()
+{
+    return this->vendas;
 }
 
-bool PetShop::login(string usuario, string senha){
-
+void PetShop::setNome(string nome)
+{
 }
 
-void PetShop::logOut(){
-
+bool PetShop::login(string usuario, string senha)
+{
+    return true;
 }
 
+void PetShop::logOut()
+{
 }
-*/

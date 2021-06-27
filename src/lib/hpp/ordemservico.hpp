@@ -2,6 +2,9 @@
 #define ORDEM_SERVICO_HPP
 
 #include "lib.hpp"
+#include "servico.hpp"
+#include "data.hpp"
+#include "cliente.hpp"
 
 class OrdemServico
 {

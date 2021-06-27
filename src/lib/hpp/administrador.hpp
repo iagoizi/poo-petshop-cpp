@@ -2,12 +2,16 @@
 #define ADMINISTRADOR_HPP
 
 #include "lib.hpp"
+#include "vendedor.hpp"
+#include "veterinario.hpp"
+#include "petshop.hpp"
+#include "usuario.hpp"
 
-class Administrador : public Veterinario, public Vendedor
+class Administrador : public Vendedor, public Veterinario
 {
 
 public:
-    Administrador(PetShop petshop, string nome = "");
+    Administrador(PetShop *petshop, string nome = "");
     ~Administrador();
 
     /*Incrementa uma certa quantidade do produto no estoque*/

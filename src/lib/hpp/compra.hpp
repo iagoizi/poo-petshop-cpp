@@ -2,6 +2,7 @@
 #define COMPRA_H
 
 #include "lib.hpp"
+#include "data.hpp"
 
 class Compra
 {

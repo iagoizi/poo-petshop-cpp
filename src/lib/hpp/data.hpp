@@ -27,4 +27,5 @@ public:
     friend ostream &operator<<(ostream &os, const Data &data);
     void now();
 };
+
 #endif

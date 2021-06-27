@@ -12,12 +12,13 @@
 #include <stdlib.h>
 #include <ctime>
 #include <stdio.h>
-//#include <algorithm>
+#include <algorithm>
 
 #include <fstream>
 #include <vector>
 using namespace std;
 
+/*
 #include "data.hpp"
 #include "compra.hpp"
 #include "conta.hpp"
@@ -29,6 +30,6 @@ using namespace std;
 #include "vendedor.hpp"
 #include "veterinario.hpp"
 #include "administrador.hpp"
-#include "petshop.hpp"
+#include "petshop.hpp"*/
 
 #endif
