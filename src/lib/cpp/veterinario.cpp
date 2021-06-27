@@ -12,19 +12,15 @@ void Veterinario::registrarTratamento(OrdemServico& ordem, string tratamento)
     ordem.setObservacao(tratamento);
 }
 
-/*
 OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada){
-    
-    return this->getNome() == cliente.getNome();
 
-    for (vector<OrdemServicos>::iterator i = this->petshop.getOrdensServicos().begin(); i != this->petshop.getOrdemServicos().end(); i++)
+    for (vector<OrdemServico>::iterator i = this->petshop.getOrdemServico().begin(); i != this->petshop.getOrdemServico().end(); i++)
     {
         if ((*i).getCliente() == cliente && (*i).getData() == dataAgendada)
             return *i;
     }
     return {};
 }
-*/
 
 
 Cliente Veterinario::buscarCadastro(long cpf)
