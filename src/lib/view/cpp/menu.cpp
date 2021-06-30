@@ -15,6 +15,10 @@ PetShop *Menu::getPetshop()
 {
     return this->petshop;
 }
+void Menu::printOpcao(int opcode, string label)
+{
+    cout << opcode << " - " << label << endl;
+}
 void Menu::printMenu()
 {
     cout << "Usuário não logado." << endl;

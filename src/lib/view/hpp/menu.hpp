@@ -16,6 +16,7 @@ public:
     ~Menu();
     void setPetshop(PetShop *petshop);
     PetShop *getPetshop();
+    void printOpcao(int opcode, string label);
     virtual void printMenu();
     virtual void realizaOperacao(int op);
 };
