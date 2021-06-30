@@ -18,18 +18,4 @@
 #include <vector>
 using namespace std;
 
-/*
-#include "data.hpp"
-#include "compra.hpp"
-#include "conta.hpp"
-#include "servico.hpp"
-#include "ordemservico.hpp"
-#include "produto.hpp"
-#include "cliente.hpp"
-#include "usuario.hpp"
-#include "vendedor.hpp"
-#include "veterinario.hpp"
-#include "administrador.hpp"
-#include "petshop.hpp"*/
-
 #endif
