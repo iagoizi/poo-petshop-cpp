@@ -1,11 +1,14 @@
 #include "../hpp/usuario.hpp"
 #include "../hpp/petshop.hpp"
 
-PetShop::PetShop()
+PetShop::PetShop(string nome)
 {
+    setNome(nome);
 }
 
-PetShop::~PetShop() {}
+PetShop::~PetShop()
+{
+}
 
 vector<Usuario> &PetShop::getUsuarios()
 {
@@ -54,13 +57,40 @@ vector<Compra> &PetShop::getVendas()
 
 void PetShop::setNome(string nome)
 {
+    const char *novoNome = nome.data();
+    int length = nome.size();
+    length = (length < M ? length : M - 1);
+    strncpy(this->nome, novoNome, length);
+    this->nome[length] = '\0';
 }
 
-bool PetShop::login(string usuario, string senha)
+Menu *PetShop::login(string usuario, string senha, bool *success)
 {
-    return true;
+    for (auto item : this->usuario)
+    {
+        if (item.getUsuario().compare(usuario) == 0 && item.getSenha().compare(senha) == 0)
+        {
+            this->sessaoAtual = item;
+            *success = true;
+            switch (item.getCargo())
+            {
+            case VENDEDOR:
+                return new MenuVendedor(this);
+                break;
+            case VETERINARIO:
+                //return new MenuVeterinario(this);
+                break;
+            case ADMINISTRADOR:
+                //return new MenuAdministrador(this);
+                break;
+            }
+        }
+    }
+    *success = false;
+    return new Menu(this);
 }
 
 void PetShop::logOut()
 {
+    //chama método para salvar informações em arquivo;
 }

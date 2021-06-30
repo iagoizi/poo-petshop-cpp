@@ -8,13 +8,15 @@
 #include "servico.hpp"
 #include "ordemservico.hpp"
 #include "compra.hpp"
+#include "../../view/hpp/menu.hpp"
+#include "../../view/hpp/menuVendedor.hpp"
 
 class Usuario;
 class PetShop
 {
     //private:
-    string nome;
-    //Usuario sessaoAtual;
+    char nome[M];
+    Usuario sessaoAtual;
     vector<Usuario> usuario;
     vector<Cliente> clientes;
     vector<Conta> conta;
@@ -26,7 +28,7 @@ class PetShop
     vector<Compra> vendas;
 
 public:
-    PetShop();
+    PetShop(string nome);
     ~PetShop();
 
     vector<Usuario> &getUsuarios();
@@ -41,7 +43,7 @@ public:
 
     void setNome(string);
 
-    bool login(string usuario, string senha);
+    Menu *login(string usuario, string senha, bool *success);
     void logOut();
 };
 

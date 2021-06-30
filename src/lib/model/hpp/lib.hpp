@@ -3,6 +3,7 @@
 
 #define M 51
 #define M10 501
+#define OPCODE_SAIDA 0
 #define DEFAULT_PATH string("../dados/")
 #define CONTAS_PETSHOP DEFAULT_PATH + string("contas.dat")
 

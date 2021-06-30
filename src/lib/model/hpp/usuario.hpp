@@ -19,8 +19,7 @@ protected:
     PetShop *petshop;
 
 public:
-    /*Todos os campos são obrigatórios com exceção do salário*/
-    Usuario(PetShop *petshop, string nome, int cargo, string usuario, string senha, double salario = 0.0);
+    Usuario(PetShop *petshop = NULL, string nome = "", int cargo = 0, string usuario = "", string senha = "", double salario = 0.0);
     ~Usuario();
     string getNome();
     int getCargo();
