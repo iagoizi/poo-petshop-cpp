@@ -16,7 +16,7 @@ class PetShop
 {
     //private:
     char nome[M];
-    Usuario sessaoAtual;
+    Usuario *sessaoAtual;
     vector<Usuario> usuario;
     vector<Cliente> clientes;
     vector<Conta> conta;
@@ -30,7 +30,8 @@ class PetShop
 public:
     PetShop(string nome);
     ~PetShop();
-
+    Usuario *getSessaoAtual();
+    string getNome();
     vector<Usuario> &getUsuarios();
     vector<Cliente> &getClientes();
     vector<Conta> &getContas();

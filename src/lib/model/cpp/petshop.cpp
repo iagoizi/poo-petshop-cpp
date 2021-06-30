@@ -10,6 +10,16 @@ PetShop::~PetShop()
 {
 }
 
+Usuario *PetShop::getSessaoAtual()
+{
+    return this->sessaoAtual;
+}
+
+string PetShop::getNome()
+{
+    return this->nome;
+}
+
 vector<Usuario> &PetShop::getUsuarios()
 {
     return this->usuario;
@@ -70,7 +80,7 @@ Menu *PetShop::login(string usuario, string senha, bool *success)
     {
         if (item.getUsuario().compare(usuario) == 0 && item.getSenha().compare(senha) == 0)
         {
-            this->sessaoAtual = item;
+            this->sessaoAtual = &item;
             *success = true;
             switch (item.getCargo())
             {

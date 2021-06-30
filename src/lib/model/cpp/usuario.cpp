@@ -3,6 +3,7 @@
 
 Usuario::Usuario(PetShop *petshop, string nome, int cargo, string usuario, string senha, double salario)
 {
+    this->petshop = petshop;
     setNome(nome);
     setCargo(cargo);
     setUsuario(usuario);

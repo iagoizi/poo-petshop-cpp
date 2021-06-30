@@ -3,14 +3,22 @@
 
 Vendedor::Vendedor(PetShop *petshop, string nome, string usuario, string senha, double salario) : Usuario(petshop, nome, VENDEDOR, usuario, senha)
 {
+    setNome(nome);
 }
 
 Vendedor::~Vendedor() {}
 
-void Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf, vector<Compra> compras)
+void Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf)
 { // mudar diagrama uml
-    Cliente cliente = Cliente(nome, tipo_animal, nome_pet, endereco, telefone, cpf, compras);
+    cout << "AQUIIIIIIIIIII" << endl;
+    Cliente cliente = Cliente(nome, tipo_animal, nome_pet, endereco, telefone, cpf);
+
+    cout << "AQUIIIIIIIIIII_2" << endl;
+    cout << getUsuario() << endl;
+    cout << this->petshop->getNome() << endl;
     this->petshop->getClientes().push_back(cliente);
+
+    cout << "AQUIIIIIIIIIII_3" << endl;
 }
 
 void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> produtos)
@@ -55,5 +63,26 @@ void Vendedor::vendaServico(Cliente cliente, vector<Servico> servico, Data dataS
                 this->petshop->getOrdemServico().push_back(ordemservico);
             }
         }
+    }
+}
+
+Produto Vendedor::buscarProduto(long id, bool *success)
+{
+    for (auto produto : this->petshop->getProdutos())
+    {
+        if (produto.getId() == id)
+        {
+            *success = true;
+            return produto;
+        }
+    }
+    *success = false;
+    return {};
+}
+void Vendedor::listarProdutos()
+{
+    for (auto produto : this->petshop->getProdutos())
+    {
+        cout << produto << endl;
     }
 }
