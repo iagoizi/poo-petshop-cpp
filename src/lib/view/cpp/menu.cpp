@@ -1,13 +1,25 @@
 #include "../hpp/menu.hpp"
+#include "../../model/hpp/petshop.hpp"
 
-Menu::Menu(PetShop petshop) : petshop(petshop)
+Menu::Menu(PetShop *petshop) : petshop(petshop)
 {
 }
-void Menu::setPetshop(PetShop petshop)
+Menu::~Menu()
+{
+}
+void Menu::setPetshop(PetShop *petshop)
 {
     this->petshop = petshop;
 }
-PetShop Menu::getPetshop()
+PetShop *Menu::getPetshop()
 {
     return this->petshop;
+}
+void Menu::printMenu()
+{
+    cout << "Usuário não logado." << endl;
+}
+void Menu::realizaOperacao(int op)
+{
+    cout << "Sem login, não há nada que pode ser feito." << endl;
 }
