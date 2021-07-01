@@ -51,7 +51,7 @@ void MenuVendedor::menuCadastrarCliente()
     if (jaCadastrado)
     {
         //Coloca para a mensagem aparecer lá em cima do menu principal.
-        this->popUp = "Cliente já cadastrado";
+        this->popUp = "Cliente já cadastrado no sistema!";
     }
     else
     {
