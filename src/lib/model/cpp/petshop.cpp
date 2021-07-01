@@ -20,7 +20,7 @@ string PetShop::getNome()
     return this->nome;
 }
 
-vector<Usuario> &PetShop::getUsuarios()
+vector<Usuario *> &PetShop::getUsuarios()
 {
     return this->usuario;
 }
@@ -78,11 +78,11 @@ Menu *PetShop::login(string usuario, string senha, bool *success)
 {
     for (auto item : this->usuario)
     {
-        if (item.getUsuario().compare(usuario) == 0 && item.getSenha().compare(senha) == 0)
+        if (item->getUsuario().compare(usuario) == 0 && item->getSenha().compare(senha) == 0)
         {
-            this->sessaoAtual = &item;
+            this->sessaoAtual = item;
             *success = true;
-            switch (item.getCargo())
+            switch (item->getCargo())
             {
             case VENDEDOR:
                 return new MenuVendedor(this);

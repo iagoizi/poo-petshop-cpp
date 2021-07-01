@@ -74,3 +74,17 @@ void Usuario::setSenha(string senha)
     strncpy(this->senha, novaSenha, length);
     this->senha[length] = '\0';
 }
+
+Cliente Usuario::buscarCadastro(long cpf, bool *success)
+{
+    for (vector<Cliente>::iterator i = this->petshop->getClientes().begin(); i != this->petshop->getClientes().end(); i++)
+    {
+        if ((*i).getCpf() == cpf)
+        {
+            *success = true;
+            return *i;
+        }
+    }
+    *success = false;
+    return {};
+}

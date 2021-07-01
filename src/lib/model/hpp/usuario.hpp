@@ -6,6 +6,7 @@
 #define VETERINARIO 2
 
 #include "lib.hpp"
+#include "cliente.hpp"
 class PetShop;
 class Usuario
 {
@@ -20,7 +21,7 @@ protected:
 
 public:
     Usuario(PetShop *petshop = NULL, string nome = "", int cargo = 0, string usuario = "", string senha = "", double salario = 0.0);
-    ~Usuario();
+    virtual ~Usuario();
     string getNome();
     int getCargo();
     string getUsuario();
@@ -33,6 +34,8 @@ public:
     void setSenha(string);
     void setSalario(double);
 
+    /*Busca um cliente no sistema a partir do seu cpf*/
+    Cliente buscarCadastro(long cpf, bool *success);
     /*Se os usuários tiverem mesmo usuario, são iguais*/
     bool operator==(Usuario);
 };

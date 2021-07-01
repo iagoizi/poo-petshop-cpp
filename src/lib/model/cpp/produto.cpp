@@ -61,3 +61,7 @@ ostream &operator<<(ostream &os, const Produto &produto)
     os << produto.id << " - " << produto.nome << "- R$" << produto.preco;
     return os;
 }
+Produto Produto::clone()
+{
+    return Produto(getNome(), getPreco(), getQuantidade(), getId());
+}

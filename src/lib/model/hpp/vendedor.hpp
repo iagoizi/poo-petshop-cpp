@@ -19,13 +19,17 @@ public:
     /*Cadastra um novo cliente, o adicionando no vetor de clientes do petshop*/
     void cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf);
     /*Registra uma venda de produtos para um determinado cliente*/
-    void vendaProduto(Cliente &cliente, vector<Produto> produtos);
-    /*Registra uma venda de serviços para um determinado cliente*/
-    void vendaServico(Cliente cliente, vector<Servico> servico, Data dataServico);
+    void vendaProduto(Cliente &cliente, vector<Produto> carrinho);
+    /*Registra uma venda de um serviço para um determinado cliente*/
+    void vendaServico(Cliente cliente, Servico servico, Data dataServico);
     /*Busca um determinado produto*/
     Produto buscarProduto(long id, bool *success);
+    /*Busca um determinado produto*/
+    Servico buscarServico(long id, bool *success);
     /*Lista os produtos cadastros*/
     void listarProdutos();
+    /*Lista os produtos cadastros*/
+    void listarServicos();
 };
 
 #endif

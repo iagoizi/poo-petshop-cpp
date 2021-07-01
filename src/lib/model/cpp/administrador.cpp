@@ -26,13 +26,13 @@ void Administrador::comprarEquipamentos(string equipamento, double preco, int qt
 
 void Administrador::cadastrarVeterinario(string nome, string usuario, string senha, double salario)
 { // isso aqui tem que ser modificado no uml
-    Veterinario veterinario = Veterinario(this->petshop, nome, usuario, senha, salario);
+    Veterinario *veterinario = new Veterinario(this->petshop, nome, usuario, senha, salario);
     this->petshop->getUsuarios().push_back(veterinario);
 }
 
 void Administrador::cadastrarVendedor(string nome, string usuario, string senha, double salario)
 { // isso aqui tem que ser modificado no uml
-    Vendedor vendedor = Vendedor(this->petshop, nome, usuario, senha, salario);
+    Vendedor *vendedor = new Vendedor(this->petshop, nome, usuario, senha, salario);
     this->petshop->getUsuarios().push_back(vendedor);
 }
 

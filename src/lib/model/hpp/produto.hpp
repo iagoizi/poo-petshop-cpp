@@ -30,5 +30,7 @@ public:
     /*Se os produtos tiverem mesmo id, são iguais*/
     bool operator==(Produto);
     friend ostream &operator<<(ostream &os, const Produto &produto);
+    /*Retorna um produto com mesmas propriedades que o produto atual*/
+    Produto clone();
 };
 #endif

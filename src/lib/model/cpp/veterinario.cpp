@@ -24,16 +24,6 @@ OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada)
     return {};
 }
 
-Cliente Veterinario::buscarCadastro(long cpf)
-{
-    for (vector<Cliente>::iterator i = this->petshop->getClientes().begin(); i != this->petshop->getClientes().end(); i++)
-    {
-        if ((*i).getCpf() == cpf)
-            return *i;
-    }
-    return {};
-}
-
 void Veterinario::listarOrdemServico()
 {
     for (auto listaServicos : petshop->getOrdemServico())
