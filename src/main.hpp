@@ -9,5 +9,8 @@
 #include "lib/model/hpp/vendedor.hpp"
 #include "lib/model/hpp/veterinario.hpp"
 #include "lib/model/hpp/administrador.hpp"
+#include "lib/model/hpp/cliente.hpp"
+
+PetShop *testes(string *usuarioTeste, string *senhaTeste);
 
 #endif
