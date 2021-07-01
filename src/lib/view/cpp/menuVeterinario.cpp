@@ -30,6 +30,7 @@ void MenuVeterinario::menuBuscarOrdensDeServico(){
 
     printTitulo("Dados do cliente:");
     cout << "\tCPF: "; cin >> cpf;
+    
     Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
     if(!clienteCadastrado){
         printErro("Cliente não cadastrado!");
