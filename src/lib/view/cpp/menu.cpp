@@ -15,15 +15,32 @@ PetShop *Menu::getPetshop()
 {
     return this->petshop;
 }
+void Menu::printMenu()
+{
+    //Limpando a tela.
+    cout << string(100, '\n');
+    //Imprime a mensagem de pop-up (caso não esteja vazia).
+    cout << (!this->popUp.empty() ? ("(" + this->popUp + ")") : "") << endl
+         << endl;
+    //Imprimindo a opção de saída (mesmo valor para todos os menus).
+    cout << "\t\t\t\t" << OPCODE_SAIDA << " - SAIR" << endl;
+}
+void Menu::realizaOperacao(int op)
+{
+    //Limpa a mensagem de pop-up para que ela não se perpetue para os tempos seguintes.
+    this->popUp.clear();
+}
+
+void Menu::printErro(string mensagem)
+{
+    cout << "\t\t\t**" << mensagem << endl;
+}
 void Menu::printOpcao(int opcode, string label)
 {
     cout << opcode << " - " << label << endl;
 }
-void Menu::printMenu()
+void Menu::printTitulo(string titulo)
 {
-    cout << "Usuário não logado." << endl;
-}
-void Menu::realizaOperacao(int op)
-{
-    cout << "Sem login, não há nada que pode ser feito." << endl;
+    cout << "\t\t" << titulo << endl
+         << endl;
 }
