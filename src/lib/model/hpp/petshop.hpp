@@ -10,6 +10,7 @@
 #include "compra.hpp"
 #include "../../view/hpp/menu.hpp"
 #include "../../view/hpp/menuVendedor.hpp"
+#include "../../view/hpp/menuVeterinario.hpp"
 
 class Usuario;
 class PetShop

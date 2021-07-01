@@ -6,7 +6,7 @@ int main()
     PetShop *petshop = testes(&usuarioTeste, &senhaTeste);
 
     //Aqui começa o main de verdade
-    int op = 1;
+    int op = 2;
     bool loggedIn = false;
     Menu *menu = petshop->login(usuarioTeste, senhaTeste, &loggedIn);
     cout << (loggedIn ? "Login efetuado com sucesso" : "Usuário ou senha incorretos") << endl;
@@ -25,9 +25,9 @@ PetShop *testes(string *usuarioTeste, string *senhaTeste)
 {
     PetShop *petshop = new PetShop("Puppycat");
     petshop->getUsuarios().push_back(new Vendedor(petshop, "Vendy Claudia", "vendedor", "senha"));
-    petshop->getUsuarios().push_back(new Veterinario(petshop, "Vet Samira", "veterniria", "senha"));
+    petshop->getUsuarios().push_back(new Veterinario(petshop, "Vet Samira", "veterinaria", "senha"));
     petshop->getUsuarios().push_back(new Administrador(petshop, "Adimênia"));
-    *usuarioTeste = "vendedor";
+    *usuarioTeste = "veterinaria";
     *senhaTeste = "senha";
     return petshop;
 }
