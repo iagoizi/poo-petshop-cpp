@@ -10,7 +10,7 @@ Administrador::Administrador(PetShop *petshop, string nome) : Usuario(petshop, n
 Administrador::~Administrador() {}
 
 void Administrador::reposicaoEstoque(Produto produto, int qtd, string descricao, double preco)
-{ // isso aqui tem que ser modificado no uml
+{
     Compra compra = Compra(descricao, preco);
     compra.pagar();
     this->petshop->getCompras().push_back(compra);
@@ -18,22 +18,40 @@ void Administrador::reposicaoEstoque(Produto produto, int qtd, string descricao,
 }
 
 void Administrador::comprarEquipamentos(string equipamento, double preco, int qtd)
-{ // isso aqui tem que ser modificado no uml
+{
     Compra compra = Compra(equipamento, preco);
     compra.pagar();
     this->petshop->getCompras().push_back(compra);
 }
 
 void Administrador::cadastrarVeterinario(string nome, string usuario, string senha, double salario)
-{ // isso aqui tem que ser modificado no uml
+{
     Veterinario *veterinario = new Veterinario(this->petshop, nome, usuario, senha, salario);
     this->petshop->getUsuarios().push_back(veterinario);
 }
 
 void Administrador::cadastrarVendedor(string nome, string usuario, string senha, double salario)
-{ // isso aqui tem que ser modificado no uml
+{
     Vendedor *vendedor = new Vendedor(this->petshop, nome, usuario, senha, salario);
     this->petshop->getUsuarios().push_back(vendedor);
+}
+
+void Administrador::cadastrarProduto(string nome, double preco, int quantidade, long id)
+{
+    Produto produto = Produto(nome, preco, quantidade, id);
+    this->petshop->getProdutos().push_back(produto);
+}
+void Administrador::cadastrarServico(string nome, double preco, long id)
+{
+    Servico servico = Servico(nome, preco, id);
+    this->petshop->getServicos().push_back(servico);
+}
+void Administrador::listarFuncionarios()
+{
+    for (auto usuario : petshop->getUsuarios())
+    {
+        cout << usuario << endl;
+    }
 }
 
 void Administrador::gerarRelatorio()
@@ -52,23 +70,10 @@ void Administrador::gerarRelatorio()
     {
         cout << itemServicos << endl;
     }
-
-    /*
-    for(vector <Compra>::iterator i = petshop.compras.begin(); i!= petshop.compras.end(); i++){
-       cout << *i << endl;
-    }
-
-    for(vector <Compra>::iterator j = petshop.vendas.begin(); j!= petshop.vendas.end(); j++){
-       cout << *j << endl;
-    }
-
-    for(vector <Compra>::iterator k = petshop.historicoServicos.begin(); k!= petshop.historicoServicos.end(); k++){
-       cout << *k << endl;
-    }*/
 }
 
 void Administrador::pagarConta(string descricao, Data dataVencimento, double valor)
-{ // isso aqui tem que ser modificado no uml
+{
     Conta conta = Conta(descricao, dataVencimento, valor);
     conta.pagar();
     this->petshop->getContas().push_back(conta);

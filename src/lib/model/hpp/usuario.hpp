@@ -38,6 +38,7 @@ public:
     Cliente buscarCadastro(long cpf, bool *success);
     /*Se os usuários tiverem mesmo usuario, são iguais*/
     bool operator==(Usuario);
+    friend ostream &operator<<(ostream &os, const Usuario &usuario);
 };
 
 #endif

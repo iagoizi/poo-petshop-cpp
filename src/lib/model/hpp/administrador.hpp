@@ -22,6 +22,12 @@ public:
     void cadastrarVeterinario(string nome, string usuario, string senha, double salario);
     /*Cadastra um novo vendedor, o adicionando no vetor de usuários*/
     void cadastrarVendedor(string nome, string usuario, string senha, double salario);
+    /*Cadastra um novo produto, o adicionando no vetor de produtos cadastrados*/
+    void cadastrarProduto(string nome, double preco, int quantidade, long id);
+    /*Cadastra um novo servico, o adicionando no vetor de servicos*/
+    void cadastrarServico(string nome, double preco, long id);
+    /*Cadastra um novo vendedor, o adicionando no vetor de usuários*/
+    void listarFuncionarios();
     /*Imprime um relatório com os históricos do sistema*/
     void gerarRelatorio();
     /*Registra que uma determinada conta foi paga neste exato momento*/

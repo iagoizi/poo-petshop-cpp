@@ -88,3 +88,8 @@ Cliente Usuario::buscarCadastro(long cpf, bool *success)
     *success = false;
     return {};
 }
+
+ostream &operator<<(ostream &os, const Usuario &usuario)
+{
+    os << "(" << usuario.cargo << ") " << usuario.usuario << " -> " << usuario.nome << " R$" << usuario.salario;
+}
