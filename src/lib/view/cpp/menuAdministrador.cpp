@@ -84,14 +84,14 @@ void MenuAdministrador::menuCadastrarProdutos()
     cin >> id;
 
     bool jaCadastrado = false;
-    //administrar->buscarCadastroProduto();
+    administrador->buscarProduto(id, &jaCadastrado);
     if (jaCadastrado)
     {
         this->popUp = "Produto já cadastrado";
     }
     else
     {
-        //administrador->cadastrarProdutos(nome, usuario, senha, salario);
+       // administrador->cadastrarProdutos(nome, preco, quantidade, id);
         this->popUp = "Cadastro realizado com sucesso!";
     }
 }
@@ -113,14 +113,14 @@ void MenuAdministrador::menuCadastrarServicos()
     cin >> id;
     
     bool jaCadastrado = false;
-    //administrar->buscarCadastroServico();
+    administrador->buscarServico(id, &jaCadastrado);
     if (jaCadastrado)
     {
         this->popUp = "Serviço já cadastrado";
     }
     else
     {
-        //administrador->cadastrarServicos(nome, preco, id);
+       // administrador->cadastrarServicos(nome, preco, id);
         this->popUp = "Cadastro realizado com sucesso!";
     }
 }
@@ -129,31 +129,34 @@ void MenuAdministrador::menuListarFuncionarios()
 {
     printTitulo("Listando Funcionários...");
     Administrador *administrador = getAdministrador();
+    /*Criar listar vendedores e veterinarios
+    printTitulo("VENDORRES");
+    administrador->
+    printTitulo("VETERINÁRIOS");*/
 
-    cout << "Usuários" << endl;
-    for (auto usuario : this->petshop->getUsuarios())
-    {
-        cout << usuario << endl;
-    }  
 }
 
 void MenuAdministrador::menuReporEstoque()
 {
     printTitulo("Repondo Estoque...");
     Administrador *administrador = getAdministrador();
-    string nome;
     int quantidade;
+    long id;
+    bool jaCadastrado = false;
+    double preco;
+    cout << "Produto" << endl;
+    cout << "\tID: ";
+    cin >> id;
+     cout << "\tPreço: ";
+    cin >> preco;
+  
+    Produto produto = administrador->buscarProduto(id, &jaCadastrado);
+    string nomeProduto = produto.getNome();
 
-    cout << "Produto" << endl
-         << "\tNome: ";
-    cin >> nome;
-
-    //bucar cadastro atraves do nome
-    if(true){
+    if(jaCadastrado){
         cout << "\tQuantidade: ";
-        cin >> quantidade; 
-        //aqui eu passo a quantidade
-
+        cin >> quantidade;
+        administrador->reposicaoEstoque(produto, quantidade, nomeProduto, (preco * quantidade));
         this->popUp = "Reposição de estoque realizad com sucesso!";
     }
     else{
@@ -168,24 +171,33 @@ void MenuAdministrador::menuPagamentoContas()
     printTitulo("Pagando Contas...");
     Administrador *administrador = getAdministrador();
     string descricao;
-    Data dataVencimento;
     double valor;
 
     cout << "Conta" << endl
          << "\tDescricao: ";
     cin >> descricao;
-    /*cout << "\tData: ";
-    cin >> dataVencimento;*/
+    cout << "\tData: ";
+    Data data;
+    int dia, mes, ano;
+    cout << "\tDia: "; 
+    cin >> dia;
+    cout << "\tMes: "; 
+    cin >> mes;
+    cout << "\tAno: "; 
+    cin >> ano;
+    data = Data(dia, mes, ano);
     cout << "\tValor: ";
     cin >> valor;
 
-    administrador->pagarConta(descricao, dataVencimento, valor);
+    administrador->pagarConta(descricao, data, valor);
     this->popUp = "Pagamento realizado com sucesso!";
 
 }
 
-void MenuAdministrador::menuRelatorios()
-{
+void MenuAdministrador::menuRelatorios(){
+    printTitulo("Relatórios");
+    Administrador *administrador = getAdministrador();
+    administrador->gerarRelatorio();
 }
 
 void MenuAdministrador::printMenu()
