@@ -11,7 +11,7 @@ Usuario::Usuario(PetShop *petshop, string nome, int cargo, string usuario, strin
     setSalario(salario);
 }
 
-Usuario::~Usuario(){};
+Usuario::~Usuario(){}
 
 string Usuario::getNome()
 {
@@ -92,4 +92,5 @@ Cliente Usuario::buscarCadastro(long cpf, bool *success)
 ostream &operator<<(ostream &os, const Usuario &usuario)
 {
     os << "(" << usuario.cargo << ") " << usuario.usuario << " -> " << usuario.nome << " R$" << usuario.salario;
+    return os;
 }

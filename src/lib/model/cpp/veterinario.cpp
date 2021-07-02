@@ -23,6 +23,7 @@ OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada,
             return *i;
         }
     }
+    *sucess = false;
     return {};
 }
 

@@ -19,6 +19,7 @@ Administrador *MenuAdministrador::getAdministrador()
     return administrador;
 }
 
+
 void MenuAdministrador::menuCadastrarVendedor()
 {
     printTitulo("Cadastrando Vendedor...");
@@ -128,12 +129,11 @@ void MenuAdministrador::menuCadastrarServicos()
 void MenuAdministrador::menuListarFuncionarios()
 {
     printTitulo("Listando Funcionários...");
-    Administrador *administrador = getAdministrador();
-    /*Criar listar vendedores e veterinarios
-    printTitulo("VENDORRES");
-    administrador->
-    printTitulo("VETERINÁRIOS");*/
 
+   //Administrador *administrador = getAdministrador();
+    //Criar listar vendedores e veterinarios
+    printTitulo("VENDORRES");
+    printTitulo("VETERINÁRIOS");
 }
 
 void MenuAdministrador::menuReporEstoque()
@@ -203,7 +203,7 @@ void MenuAdministrador::menuRelatorios(){
 void MenuAdministrador::printMenu()
 {
     Menu::printMenu();
-    printTitulo("MENU VENDEDOR");
+    printTitulo("MENU ADMINISTRADOR");
     printOpcao(CADASTRAR_VENDEDOR, "Cadastrar novo vendedor");
     printOpcao(CADASTRAR_VETERINARIO, "Cadastrar novo veterinário");
     printOpcao(CADASTRAR_PRODUTOS, "Cadastrar novo produto");

@@ -1,5 +1,5 @@
-#ifndef MENU_VETERITARIO
-#define MENU_VETERITARIO
+#ifndef MENU_VETERINARIO
+#define MENU_VETERINARIO
 #include "menu.hpp"
 #include "../../model/hpp/petshop.hpp"
 #include "../../model/hpp/veterinario.hpp"

@@ -13,6 +13,8 @@ Veterinario *MenuVeterinario::getVeterinario()
     }
     return veterinario;
 }
+
+
 void MenuVeterinario::menuListarOrdensDeServicos()
 {
     printTitulo("Lista de Ordens de Serviços:");

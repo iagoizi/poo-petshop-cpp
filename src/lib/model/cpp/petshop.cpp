@@ -91,7 +91,7 @@ Menu *PetShop::login(string usuario, string senha, bool *success)
                 return new MenuVeterinario(this);
                 break;
             case ADMINISTRADOR:
-                //return new MenuAdministrador(this);
+                return new MenuAdministrador(this);
                 break;
             }
         }

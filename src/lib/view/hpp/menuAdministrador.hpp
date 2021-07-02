@@ -3,8 +3,6 @@
 
 #include "../../model/hpp/lib.hpp"
 #include "../../model/hpp/petshop.hpp"
-#include "../../model/hpp/usuario.hpp"
-#include "../../model/hpp/veterinario.hpp"
 #include "../../model/hpp/administrador.hpp"
 #include "../../model/hpp/produto.hpp"
 #include "../../model/hpp/servico.hpp"
@@ -18,11 +16,10 @@
 #define REPOR_ESTOQUE 6 
 #define PAGAR_CONTAS 7
 #define GERAR_RELATORIOS 8
-
 using namespace std;
-
-class MenuAdministrador : virtual public Menu
-{
+class Administrador;
+class MenuAdministrador : virtual public Menu{
+    Administrador* getAdministrador();
 private:
     void menuCadastrarCliente();
     void menuCadastrarVendedor();
@@ -33,7 +30,7 @@ private:
     void menuReporEstoque();
     void menuPagamentoContas();
     void menuRelatorios();
-    Administrador *getAdministrador();
+
 public:
     MenuAdministrador(PetShop *petshop);
     ~MenuAdministrador();
