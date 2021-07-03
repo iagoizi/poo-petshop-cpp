@@ -1,6 +1,7 @@
 #include "../hpp/menuAdministrador.hpp"
+#include "../../model/hpp/administrador.hpp"
 
-MenuAdministrador::MenuAdministrador(PetShop *petshop) : Menu(petshop)
+MenuAdministrador::MenuAdministrador(PetShop *petshop) : Menu(petshop), MenuVendedor(petshop), MenuVeterinario(petshop)
 {
 }
 
@@ -18,7 +19,6 @@ Administrador *MenuAdministrador::getAdministrador()
     }
     return administrador;
 }
-
 
 void MenuAdministrador::menuCadastrarVendedor()
 {
@@ -92,7 +92,7 @@ void MenuAdministrador::menuCadastrarProdutos()
     }
     else
     {
-       // administrador->cadastrarProdutos(nome, preco, quantidade, id);
+        administrador->cadastrarProduto(nome, preco, quantidade, id);
         this->popUp = "Cadastro realizado com sucesso!";
     }
 }
@@ -108,11 +108,11 @@ void MenuAdministrador::menuCadastrarServicos()
     cout << "Serviço" << endl
          << "\tNome: ";
     cin >> nome;
-    cout << "Preço: " << endl;
+    cout << "\tPreço: ";
     cin >> preco;
-    cout << "Id: " << endl;
+    cout << "\tId: ";
     cin >> id;
-    
+
     bool jaCadastrado = false;
     administrador->buscarServico(id, &jaCadastrado);
     if (jaCadastrado)
@@ -121,7 +121,7 @@ void MenuAdministrador::menuCadastrarServicos()
     }
     else
     {
-       // administrador->cadastrarServicos(nome, preco, id);
+        administrador->cadastrarServico(nome, preco, id);
         this->popUp = "Cadastro realizado com sucesso!";
     }
 }
@@ -129,17 +129,17 @@ void MenuAdministrador::menuCadastrarServicos()
 void MenuAdministrador::menuListarFuncionarios()
 {
     printTitulo("Listando Funcionários...");
-
-   //Administrador *administrador = getAdministrador();
+    Administrador *administrador = getAdministrador();
     //Criar listar vendedores e veterinarios
-    printTitulo("VENDORRES");
-    printTitulo("VETERINÁRIOS");
+    administrador->listarFuncionarios();
+    esperarEnter();
 }
 
 void MenuAdministrador::menuReporEstoque()
 {
     printTitulo("Repondo Estoque...");
     Administrador *administrador = getAdministrador();
+    administrador->listarProdutos();
     int quantidade;
     long id;
     bool jaCadastrado = false;
@@ -147,23 +147,23 @@ void MenuAdministrador::menuReporEstoque()
     cout << "Produto" << endl;
     cout << "\tID: ";
     cin >> id;
-     cout << "\tPreço: ";
+    cout << "\tPreço de aquisição: ";
     cin >> preco;
-  
+
     Produto produto = administrador->buscarProduto(id, &jaCadastrado);
     string nomeProduto = produto.getNome();
 
-    if(jaCadastrado){
+    if (jaCadastrado)
+    {
         cout << "\tQuantidade: ";
         cin >> quantidade;
         administrador->reposicaoEstoque(produto, quantidade, nomeProduto, (preco * quantidade));
-        this->popUp = "Reposição de estoque realizad com sucesso!";
+        this->popUp = "Reposição de estoque realizada com sucesso!";
     }
-    else{
+    else
+    {
         this->popUp = "Produto inexistente no estoque!";
     }
-
-
 }
 
 void MenuAdministrador::menuPagamentoContas()
@@ -175,15 +175,17 @@ void MenuAdministrador::menuPagamentoContas()
 
     cout << "Conta" << endl
          << "\tDescricao: ";
-    cin >> descricao;
-    cout << "\tData: ";
+    cin.ignore();
+    getline(cin, descricao);
+    cout << "\tData: " << endl;
     Data data;
     int dia, mes, ano;
-    cout << "\tDia: "; 
+
+    cout << "\t-Dia: ";
     cin >> dia;
-    cout << "\tMes: "; 
+    cout << "\t-Mes: ";
     cin >> mes;
-    cout << "\tAno: "; 
+    cout << "\t-Ano: ";
     cin >> ano;
     data = Data(dia, mes, ano);
     cout << "\tValor: ";
@@ -191,27 +193,35 @@ void MenuAdministrador::menuPagamentoContas()
 
     administrador->pagarConta(descricao, data, valor);
     this->popUp = "Pagamento realizado com sucesso!";
-
 }
 
-void MenuAdministrador::menuRelatorios(){
+void MenuAdministrador::menuRelatorios()
+{
     printTitulo("Relatórios");
     Administrador *administrador = getAdministrador();
     administrador->gerarRelatorio();
+    esperarEnter();
 }
 
 void MenuAdministrador::printMenu()
 {
     Menu::printMenu();
     printTitulo("MENU ADMINISTRADOR");
+    printOpcao(CADASTRAR_CLIENTE_ADMIN, "Cadastrar novo cliente");
     printOpcao(CADASTRAR_VENDEDOR, "Cadastrar novo vendedor");
     printOpcao(CADASTRAR_VETERINARIO, "Cadastrar novo veterinário");
-    printOpcao(CADASTRAR_PRODUTOS, "Cadastrar novo produto");
-    printOpcao(CADASTRAR_SERVICOS, "Cadastrar novo serviço");
+    printOpcao(CADASTRAR_PRODUTOS_ADMIN, "Cadastrar novo produto");
+    printOpcao(CADASTRAR_SERVICOS_ADMIN, "Cadastrar novo serviço");
+    printOpcao(VENDER_PRODUTO_ADMIN, "Vender produtos");
+    printOpcao(VENDER_SERVICO_ADMIN, "Vender serviços");
     printOpcao(LISTAR_FUNCIONARIOS, "Listar funcionários");
+    printOpcao(LISTAR_CLIENTES_ADMIN, "Listar clientes do PetShop");
+    printOpcao(LISTAR_ORDENS_SERVICO_ADMIN, "Listar Ordens de Serviço");
+    printOpcao(REGISTRAR_TRATAMENTO_ADMIN, "Registrar tratamento");
     printOpcao(REPOR_ESTOQUE, "Repor estoque");
     printOpcao(PAGAR_CONTAS, "Pagar contas");
-    printOpcao(GERAR_RELATORIOS, "Gerar relatórios");    
+    printOpcao(GERAR_RELATORIOS, "Gerar relatórios");
+
     cout << endl
          << endl;
 }
@@ -223,18 +233,37 @@ void MenuAdministrador::realizaOperacao(int op)
          << endl;
     switch (op)
     {
+    case VENDER_PRODUTO_ADMIN:
+        menuVenderProduto();
+        break;
+    case VENDER_SERVICO_ADMIN:
+        menuVenderServico();
+        break;
+    case CADASTRAR_CLIENTE_ADMIN:
+        menuCadastrarCliente();
+        break;
+    case LISTAR_CLIENTES_ADMIN:
+        menuListarClientes();
+        break;
+    case CADASTRAR_PRODUTOS_ADMIN:
+        menuCadastrarProdutos();
+        break;
+    case CADASTRAR_SERVICOS_ADMIN:
+        menuCadastrarServicos();
+        break;
+    case REGISTRAR_TRATAMENTO_ADMIN:
+        menuRegistrarTratamento();
+        break;
+    case LISTAR_ORDENS_SERVICO_ADMIN:
+        menuListarOrdensDeServicos();
+        break;
     case CADASTRAR_VENDEDOR:
         menuCadastrarVendedor();
         break;
     case CADASTRAR_VETERINARIO:
         menuCadastrarVeterinario();
         break;
-    case CADASTRAR_PRODUTOS:
-        menuCadastrarProdutos();
-        break;
-    case CADASTRAR_SERVICOS:
-        menuCadastrarServicos();
-        break;
+
     case LISTAR_FUNCIONARIOS:
         menuListarFuncionarios();
         break;

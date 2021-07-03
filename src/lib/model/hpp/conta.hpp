@@ -13,7 +13,7 @@ class Conta
     double valor;
 
 public:
-    Conta(string descricao = "", Data dataVencimento = Data(), Data dataPagamento = Data(), double valor = 0.0);
+    Conta(string descricao = "", Data dataVencimento = Data(), double valor = 0.0, Data dataPagamento = Data());
     ~Conta();
     string getDescricao();
     Data getDataVencimento();

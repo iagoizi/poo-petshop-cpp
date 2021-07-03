@@ -1,7 +1,7 @@
 #include "../hpp/vendedor.hpp"
 #include "../hpp/petshop.hpp"
 
-Vendedor::Vendedor(PetShop *petshop, string nome, string usuario, string senha, double salario) : Usuario(petshop, nome, VENDEDOR, usuario, senha)
+Vendedor::Vendedor(PetShop *petshop, string nome, string usuario, string senha, double salario) : Usuario(petshop, nome, VENDEDOR, usuario, senha, salario)
 {
     setNome(nome);
 }

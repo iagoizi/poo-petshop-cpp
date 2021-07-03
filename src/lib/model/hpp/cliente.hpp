@@ -37,6 +37,6 @@ public:
 
     /*Se os clientes tiverem o mesmo cpf, são o mesmo cliente*/
     bool operator==(Cliente);
-    friend ostream &operator<<(ostream &out, const Cliente &cliente);
+    friend ostream &operator<<(ostream &out, Cliente &cliente);
 };
 #endif

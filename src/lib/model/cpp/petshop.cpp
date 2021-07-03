@@ -1,5 +1,8 @@
 #include "../hpp/usuario.hpp"
 #include "../hpp/petshop.hpp"
+#include "../../view/hpp/menuVendedor.hpp"
+#include "../../view/hpp/menuVeterinario.hpp"
+#include "../../view/hpp/menuAdministrador.hpp"
 
 PetShop::PetShop(string nome)
 {

@@ -14,7 +14,12 @@ void Administrador::reposicaoEstoque(Produto produto, int qtd, string descricao,
     Compra compra = Compra(descricao, preco);
     compra.pagar();
     this->petshop->getCompras().push_back(compra);
+    cout << "DENTRO DA FUNÇÃO REPOSIÇÃO DE ESTOQUE\n";
+    cout << "Quantidade do produto antes de setar: \n"
+         << produto.getQuantidade();
     produto.setQuantidade(produto.getQuantidade() + qtd);
+    cout << "Quantidade do produto antes de setar: \n"
+         << produto.getQuantidade();
 }
 
 void Administrador::comprarEquipamentos(string equipamento, double preco, int qtd)
@@ -35,7 +40,6 @@ void Administrador::cadastrarVendedor(string nome, string usuario, string senha,
     Vendedor *vendedor = new Vendedor(this->petshop, nome, usuario, senha, salario);
     this->petshop->getUsuarios().push_back(vendedor);
 }
-
 void Administrador::cadastrarProduto(string nome, double preco, int quantidade, long id)
 {
     Produto produto = Produto(nome, preco, quantidade, id);
@@ -50,25 +54,45 @@ void Administrador::listarFuncionarios()
 {
     for (auto usuario : petshop->getUsuarios())
     {
-        cout << usuario << endl;
+        cout << *usuario << endl;
     }
 }
 
 void Administrador::gerarRelatorio()
 {
-    for (auto itemCompras : petshop->getCompras())
+
+    if (!petshop->getContas().empty())
     {
-        cout << itemCompras << endl;
+        cout << "\t\tCONTAS" << endl;
+        for (auto conta : petshop->getContas())
+        {
+            cout << conta << endl;
+        }
+    }
+    if (!petshop->getCompras().empty())
+    {
+        cout << "\t\tCOMPRAS" << endl;
+        for (auto compra : petshop->getCompras())
+        {
+            cout << compra << endl;
+        }
+    }
+    if (!petshop->getVendas().empty())
+    {
+        cout << "\t\tVENDAS" << endl;
+        for (auto venda : petshop->getVendas())
+        {
+            cout << venda << endl;
+        }
     }
 
-    for (auto itemVendas : petshop->getVendas())
+    if (!petshop->getServicos().empty())
     {
-        cout << itemVendas << endl;
-    }
-
-    for (auto itemServicos : petshop->getHistoricoServico())
-    {
-        cout << itemServicos << endl;
+        cout << "\t\tSERVICOS" << endl;
+        for (auto servico : petshop->getServicos())
+        {
+            cout << servico << endl;
+        }
     }
 }
 

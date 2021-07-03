@@ -9,11 +9,8 @@
 #include "ordemservico.hpp"
 #include "compra.hpp"
 #include "administrador.hpp"
-#include "../../view/hpp/menu.hpp"
-#include "../../view/hpp/menuVendedor.hpp"
-#include "../../view/hpp/menuVeterinario.hpp"
-#include "../../view/hpp/menuAdministrador.hpp"
 class Usuario;
+class Menu;
 class PetShop
 {
     //private:

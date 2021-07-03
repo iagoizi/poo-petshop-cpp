@@ -13,12 +13,13 @@ void Veterinario::registrarTratamento(OrdemServico &ordem, string tratamento)
     ordem.setObservacao(tratamento);
 }
 
-OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada, bool* sucess)
+OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada, bool *sucess)
 {
 
     for (vector<OrdemServico>::iterator i = this->petshop->getOrdemServico().begin(); i != this->petshop->getOrdemServico().end(); i++)
     {
-        if ((*i).getCliente() == cliente && (*i).getData() == dataAgendada){
+        if ((*i).getCliente() == cliente && (*i).getData() == dataAgendada)
+        {
             *sucess = true;
             return *i;
         }
@@ -32,5 +33,13 @@ void Veterinario::listarOrdemServico()
     for (auto listaServicos : petshop->getOrdemServico())
     {
         cout << listaServicos << endl;
+    }
+}
+
+void Veterinario::listarClientes()
+{
+    for (auto cliente : petshop->getClientes())
+    {
+        cout << cliente << endl;
     }
 }

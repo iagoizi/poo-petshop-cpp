@@ -18,6 +18,8 @@ protected:
     void printErro(string mensagem);
     /*imprime um título de uma operação*/
     void printTitulo(string titulo);
+    /*espera pelo usuario apertar enter*/
+    void esperarEnter();
 
 public:
     Menu(PetShop *petshop);

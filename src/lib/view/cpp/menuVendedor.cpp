@@ -30,9 +30,11 @@ void MenuVendedor::menuCadastrarCliente()
     /*Pegando as informações do usuário*/
     cout << "Cliente" << endl
          << "\tNome: ";
-    cin >> nome;
+    //cin.getline(nome, 50);
+    cin.ignore();
+    getline(cin, nome);
     cout << "\tEndereço: ";
-    cin >> endereco;
+    getline(cin, endereco);
     cout << "\tTelefone: ";
     cin >> tel;
     cout << "\tCPF: ";
@@ -41,9 +43,10 @@ void MenuVendedor::menuCadastrarCliente()
     cout << endl
          << "PET" << endl
          << "\tNome do pet: ";
-    cin >> nomePet;
+    cin.ignore();
+    getline(cin, nomePet);
     cout << "\tTipo do animal: ";
-    cin >> tipoAnimal;
+    getline(cin, tipoAnimal);
 
     /*Conferindo para ver se o cliente já não está cadastrado*/
     bool jaCadastrado = false;
@@ -73,7 +76,7 @@ void MenuVendedor::menuVenderProduto()
     Produto produto, produtoCarrinho;
     do
     {
-        cout << "Deseja comprar o produto..." << endl
+        cout << "Deseja comprar o produto... (Para finalizar a compra, digite " << OPCODE_SAIDA << ")" << endl
              << "\tId: ";
         cin >> id;
         if (id != OPCODE_SAIDA)
@@ -83,6 +86,7 @@ void MenuVendedor::menuVenderProduto()
             {
                 cout << "\tQuantidade: ";
                 cin >> qtd;
+                cout << "Quantidade do produto em estoque: " << produto.getQuantidade() << "Qtd comprar: " << qtd << endl; //Retirar isso
                 if (qtd <= produto.getQuantidade())
                 {
                     produtoCarrinho = produto.clone();
@@ -160,32 +164,42 @@ void MenuVendedor::menuVenderServico()
 
 Cliente MenuVendedor::compradorPossuiCadastro(Vendedor *vendedor)
 {
-    cout << "Comprador tem cadastro? (Se sim, digite 'sim'. Senão, apenas aperte enter) ";
+    cout << "Comprador tem cadastro? (Se sim, digite 'sim'. Senão, aperte qualquer valor) ";
     string sim;
     cin >> sim;
     /*A priori, o cliente é dado como desconhecido*/
     Cliente comprador = Cliente("Desconhecido");
+    bool jaCadastrado = false;
     if (sim.compare("sim") == 0)
     {
         long cpf;
         cout << "CPF do cliente: ";
         cin >> cpf;
         /*Conferindo para ver se o cliente está cadastrado*/
-        bool jaCadastrado = false;
         comprador = vendedor->buscarCadastro(cpf, &jaCadastrado);
         if (!jaCadastrado)
         {
             cout << "-> Cliente não cadastrado" << endl;
-        }
-        else
-        {
-            cout << "Criar cadastro?  (Se sim, digite 'sim'. Senão, apenas aperte enter) ";
+            cout << "Criar cadastro?  (Se sim, digite 'sim'. Senão, aperte qualquer valor) ";
             cin >> sim;
             if (sim.compare("sim") == 0)
             {
                 menuCadastrarCliente();
                 comprador = vendedor->buscarCadastro(cpf, &jaCadastrado);
             }
+        }
+    }
+    else
+    {
+        cout << "Criar cadastro?  (Se sim, digite 'sim'. Senão, aperte qualquer valor) ";
+        cin >> sim;
+        if (sim.compare("sim") == 0)
+        {
+            long cpf;
+            cout << "CPF do cliente: ";
+            cin >> cpf;
+            menuCadastrarCliente();
+            comprador = vendedor->buscarCadastro(cpf, &jaCadastrado);
         }
     }
     return comprador;

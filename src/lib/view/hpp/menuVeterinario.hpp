@@ -15,17 +15,20 @@
 #define BUSCAR_ORDENS_SERVICO 4
 using namespace std;
 
-class MenuVeterinario : virtual public Menu{
-    Veterinario* getVeterinario();
-    protected:
-        void menuRegistrarTratamento();
-        void menuListarOrdensDeServicos();
-        void menuBuscarOrdensDeServico();
-        void menuListarClientes();
-    public:
-        MenuVeterinario(PetShop* petshop);
-        ~MenuVeterinario();
-        virtual void printMenu();
-        virtual void realizaOperacao(int op);
+class MenuVeterinario : virtual public Menu
+{
+    Veterinario *getVeterinario();
+
+protected:
+    void menuRegistrarTratamento();
+    void menuListarOrdensDeServicos();
+    void menuBuscarOrdensDeServico();
+    void menuListarClientes();
+
+public:
+    MenuVeterinario(PetShop *petshop);
+    ~MenuVeterinario();
+    virtual void printMenu();
+    virtual void realizaOperacao(int op);
 };
 #endif

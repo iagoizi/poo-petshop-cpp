@@ -64,6 +64,15 @@ void Data::now()
 
 ostream &operator<<(ostream &os, const Data &data)
 {
-    os << data.dia << "/" << data.mes << "/" << data.ano << ", " << data.hora << ":" << data.minuto << "h";
+    os << data.dia << "/" << data.mes << "/" << data.ano;
+    if (data.hora != -1)
+    {
+        os << ", " << data.hora;
+        if (data.minuto != -1)
+        {
+            os << ":" << data.minuto;
+        }
+        os << "h";
+    }
     return os;
 }

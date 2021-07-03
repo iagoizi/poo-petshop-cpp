@@ -14,17 +14,19 @@ Veterinario *MenuVeterinario::getVeterinario()
     return veterinario;
 }
 
-
 void MenuVeterinario::menuListarOrdensDeServicos()
 {
     printTitulo("Lista de Ordens de Serviços:");
     Veterinario *veterinario = getVeterinario();
     veterinario->listarOrdemServico();
+    esperarEnter();
 }
 void MenuVeterinario::menuListarClientes()
 {
     printTitulo("Lista de Clientes:");
-    this->petshop->getClientes();
+    Veterinario *veterinario = getVeterinario();
+    veterinario->listarClientes();
+    esperarEnter();
 }
 void MenuVeterinario::menuBuscarOrdensDeServico()
 {

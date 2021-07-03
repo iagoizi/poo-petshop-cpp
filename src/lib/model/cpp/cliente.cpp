@@ -43,8 +43,8 @@ void Cliente::setEndereco(string endereco)
     const char *novoEndereco = endereco.data();
     int length = endereco.size();
     length = (length < M10 ? length : M10 - 1);
-    strncpy(this->nome, novoEndereco, length);
-    this->nome[length] = '\0';
+    strncpy(this->endereco, novoEndereco, length);
+    this->endereco[length] = '\0';
 }
 void Cliente::setTelefone(int telefone)
 {
@@ -82,7 +82,7 @@ long Cliente::getCpf()
 {
     return this->cpf;
 }
-vector<Compra>& Cliente::getCompras()
+vector<Compra> &Cliente::getCompras()
 {
     return this->compras;
 }
@@ -92,15 +92,17 @@ bool Cliente::operator==(Cliente cliente)
     return this->cpf == cliente.getCpf();
 }
 
-ostream &operator<<(ostream &out, const Cliente &cliente){
-    out << "Cliente: " << cliente.nome << endl
-        << "CPF: " << cliente.cpf << endl
-        << "Endereço: " << cliente.endereco << endl
-        << "Telefone: " << cliente.telefone << endl
-        << "Pet: " << cliente.nomePet << endl
-        << "Tipo do pet: " << cliente.tipoAnimal << endl
+ostream &operator<<(ostream &out, Cliente &cliente)
+{
+    out << "Cliente: " << cliente.getNome() << endl
+        << "CPF: " << cliente.getCpf() << endl
+        << "Endereço: "
+        << cliente.getEndereco() << endl
+        << "Telefone: " << cliente.getTelefone() << endl
+        << "Pet: " << cliente.getNome() << endl
+        << "Tipo do pet: " << cliente.getTipoAnimal() << endl
         << "Compras: " << endl;
-        for(auto compra : cliente.compras)
-            out << compra << endl;
+    for (auto compra : cliente.compras)
+        out << compra << endl;
     return out;
 }
