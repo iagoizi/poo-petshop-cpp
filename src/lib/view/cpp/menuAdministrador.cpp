@@ -176,7 +176,7 @@ void MenuAdministrador::menuPagamentoContas()
          << "\tDescricao: ";
     cin.ignore();
     getline(cin, descricao);
-    cout << "\tData: " << endl;
+    cout << "\tData de vencimento: " << endl;
     Data data;
     int dia, mes, ano;
 

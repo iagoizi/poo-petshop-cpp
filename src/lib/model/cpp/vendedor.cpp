@@ -8,11 +8,12 @@ Vendedor::Vendedor(PetShop *petshop, string nome, string usuario, string senha, 
 
 Vendedor::~Vendedor() {}
 
-void Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf)
+Cliente Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf)
 {
     Cliente cliente = Cliente(nome, tipo_animal, nome_pet, endereco, telefone, cpf);
     cout << this->petshop->getNome() << endl;
     this->petshop->getClientes().push_back(cliente);
+    return cliente;
 }
 
 void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
@@ -23,8 +24,16 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
     vector<Produto>::iterator it;
     for (it = carrinho.begin(); it != carrinho.end(); it++)
     {
-        descricaoCompra += to_string((*it).getQuantidade()) + "x " + (*it).getNome() + "(R$" + to_string((*it).getPreco()) + ")\n";
-        preco += (*it).getPreco() * (*it).getQuantidade();
+        //Transformando o valor do produto numa string com no máximo 2 casas decimais.
+        string precoString = to_string((int)it->getPreco()) + "." + to_string((int)((it->getPreco() - ((int)it->getPreco())) * 100));
+        //Adicionando a quantidade e o valor à descrição da compra
+        descricaoCompra += to_string(it->getQuantidade()) + "x " + it->getNome() + " (R$" + precoString + " cada)";
+        //Se ainda existirem mais produtos a serem adicionados...
+        if (it->getId() != (carrinho.end() - 1)->getId())
+        {
+            descricaoCompra += ", ";
+        }
+        preco += it->getPreco() * it->getQuantidade();
         vector<Produto>::iterator produtoEstoque;
         for (produtoEstoque = this->petshop->getProdutos().begin(); produtoEstoque != this->petshop->getProdutos().end(); produtoEstoque++)
         {

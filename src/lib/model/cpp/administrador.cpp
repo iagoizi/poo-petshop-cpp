@@ -68,45 +68,86 @@ void Administrador::gerarRelatorio()
 
     if (!petshop->getContas().empty())
     {
-        cout << "\t\tCONTAS" << endl;
+        cout << "\t\tCONTAS" << endl
+             << endl;
         for (auto conta : petshop->getContas())
         {
             cout << conta << endl;
         }
+        cout << endl
+             << endl;
+    }
+    else
+    {
+        cout << "-> Nenhuma conta paga até o momento." << endl;
     }
     if (!petshop->getCompras().empty())
     {
-        cout << "\t\tCOMPRAS" << endl;
+        cout << "\t\tCOMPRAS" << endl
+             << endl;
         for (auto compra : petshop->getCompras())
         {
             cout << compra << endl;
         }
+        cout << endl
+             << endl;
+    }
+    else
+    {
+        cout << "-> Nenhuma compra feita até o momento." << endl;
     }
     if (!petshop->getVendas().empty())
     {
-        cout << "\t\tVENDAS" << endl;
+        cout << "\t\tVENDAS" << endl
+             << endl;
         for (auto venda : petshop->getVendas())
         {
             cout << venda << endl;
         }
+        cout << endl
+             << endl;
+    }
+    else
+    {
+        cout << "-> Nenhuma venda realizada até o momento." << endl;
     }
 
     if (!petshop->getHistoricoServico().empty())
     {
-        cout << "\t\tSERVICOS JÁ REALIZADOS" << endl;
+        cout << "\t\tSERVICOS JÁ REALIZADOS" << endl
+             << endl;
+        cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
+             << "| " << setw(7) << "Preço"
+             << "  | NomeServiço [Nome do cliente]" << endl;
         for (auto ordem : petshop->getHistoricoServico())
         {
             cout << ordem << endl;
         }
+        cout << endl
+             << endl;
+    }
+    else
+    {
+        cout << "-> Nenhum serviço realizado até o momento." << endl;
     }
 
     if (!petshop->getOrdemServico().empty())
     {
-        cout << "\t\tORDENS DE SERVIÇO (Serviços a serem realizados)" << endl;
+        cout << "\t\tORDENS DE SERVIÇO (Serviços a serem realizados)" << endl
+             << endl;
+        cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
+             << "| " << setw(7) << "Preço"
+             << "  | NomeServiço [Nome do cliente]" << endl;
         for (auto ordem : petshop->getOrdemServico())
         {
             cout << ordem << endl;
         }
+        cout << endl
+             << endl;
+    }
+    else
+    {
+        cout << "-> Nenhum serviço agendado." << endl;
     }
 }
 

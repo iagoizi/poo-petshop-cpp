@@ -30,10 +30,14 @@ OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada,
 
 void Veterinario::listarOrdemServico()
 {
+    cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
+         << "| " << setw(7) << "Preço"
+         << "  | NomeServiço [Nome do cliente]" << endl;
     for (auto listaServicos : petshop->getOrdemServico())
     {
         cout << listaServicos << endl;
     }
+    cout << endl;
 }
 
 void Veterinario::listarClientes()

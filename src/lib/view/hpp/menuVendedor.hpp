@@ -20,7 +20,7 @@ class MenuVendedor : virtual public Menu
     Cliente compradorPossuiCadastro(Vendedor *vendedor);
 
 protected:
-    void menuCadastrarCliente();
+    Cliente menuCadastrarCliente();
     void menuVenderProduto();
     void menuVenderServico();
 
