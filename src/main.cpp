@@ -30,7 +30,7 @@ int main()
     return 0;
 }
 
-/*Configuração padrão do petshop*/
+/*Configuração padrão do petshop, com alguns produtos, funcionários e serviços*/
 PetShop *initPetshop()
 {
     PetShop *petshop = new PetShop("Puppycat");

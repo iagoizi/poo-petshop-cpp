@@ -27,7 +27,7 @@ void Menu::printMenu()
     cout << (!this->popUp.empty() ? ("(" + this->popUp + ")") : "") << endl
          << endl;
     //Imprimindo a opção de saída (mesmo valor para todos os menus).
-    cout << "\t\t" << OPCODE_SAIDA << " - LOG OUT" << endl;
+    cout << "\t\t\t\t\t" << OPCODE_SAIDA << " : LOG OUT" << endl;
 }
 
 void Menu::realizaOperacao(int op)
@@ -43,7 +43,7 @@ void Menu::printErro(string mensagem)
 
 void Menu::printOpcao(int opcode, string label)
 {
-    cout << opcode << " - " << label << endl;
+    cout << setw(2) << opcode << " - " << label << endl;
 }
 
 void Menu::printTitulo(string titulo)

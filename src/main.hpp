@@ -7,6 +7,7 @@
 #include "lib/model/hpp/produto.hpp"
 #include "lib/model/hpp/servico.hpp"
 
+/*Configuração padrão do petshop, com alguns produtos, funcionários e serviços*/
 PetShop *initPetshop();
 
 #endif
