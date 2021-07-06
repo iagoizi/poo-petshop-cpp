@@ -31,7 +31,9 @@
 *.out
 *.app
 
-./vscode
+src/.vscode
+src/lib/.vscode
+.vscode
 ./vs
 ./lib/.vs
 *.bin
