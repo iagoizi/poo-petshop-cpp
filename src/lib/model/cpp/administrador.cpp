@@ -14,12 +14,17 @@ void Administrador::reposicaoEstoque(Produto produto, int qtd, string descricao,
     Compra compra = Compra(descricao, preco);
     compra.pagar();
     this->petshop->getCompras().push_back(compra);
-    cout << "DENTRO DA FUNÇÃO REPOSIÇÃO DE ESTOQUE\n";
-    cout << "Quantidade do produto antes de setar: \n"
-         << produto.getQuantidade();
-    produto.setQuantidade(produto.getQuantidade() + qtd);
-    cout << "Quantidade do produto antes de setar: \n"
-         << produto.getQuantidade();
+    for (vector<Produto>::iterator produtoEstoque = this->petshop->getProdutos().begin(); produtoEstoque != this->petshop->getProdutos().end(); produtoEstoque++)
+    {
+        if (produto == (*produtoEstoque))
+        {
+            produtoEstoque->setQuantidade(produtoEstoque->getQuantidade() + qtd);
+            if (produtoEstoque->getQuantidade() < 0)
+            {
+                produtoEstoque->setQuantidade(0);
+            }
+        }
+    }
 }
 
 void Administrador::comprarEquipamentos(string equipamento, double preco, int qtd)
@@ -86,12 +91,21 @@ void Administrador::gerarRelatorio()
         }
     }
 
-    if (!petshop->getServicos().empty())
+    if (!petshop->getHistoricoServico().empty())
     {
-        cout << "\t\tSERVICOS" << endl;
-        for (auto servico : petshop->getServicos())
+        cout << "\t\tSERVICOS JÁ REALIZADOS" << endl;
+        for (auto ordem : petshop->getHistoricoServico())
         {
-            cout << servico << endl;
+            cout << ordem << endl;
+        }
+    }
+
+    if (!petshop->getOrdemServico().empty())
+    {
+        cout << "\t\tORDENS DE SERVIÇO (Serviços a serem realizados)" << endl;
+        for (auto ordem : petshop->getOrdemServico())
+        {
+            cout << ordem << endl;
         }
     }
 }

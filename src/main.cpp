@@ -2,11 +2,7 @@
 
 int main()
 {
-    //string usuarioTeste, senhaTeste;
-    //PetShop *petshop = testes(&usuarioTeste, &senhaTeste);
-    //Aqui começa o main de verdade
-    PetShop *petshop = new PetShop("Puppycat");
-    petshop->getUsuarios().push_back(new Administrador(petshop, "Adimênia"));
+    PetShop *petshop = initPetshop();
     int op = 0;
     bool loggedIn = false;
     string usuario, senha;
@@ -34,14 +30,20 @@ int main()
     return 0;
 }
 
-/*cadastro manual de usuário <APENAS PARA TESTES>*/
-PetShop *testes(string *usuarioTeste, string *senhaTeste)
+/*Configuração padrão do petshop*/
+PetShop *initPetshop()
 {
     PetShop *petshop = new PetShop("Puppycat");
-    petshop->getUsuarios().push_back(new Vendedor(petshop, "Vendy Claudia", "vendedor", "senha"));
-    petshop->getUsuarios().push_back(new Veterinario(petshop, "Vet Samira", "veterinaria", "senha"));
-    petshop->getUsuarios().push_back(new Administrador(petshop, "Adimênia"));
-    *usuarioTeste = "vendedor";
-    *senhaTeste = "senha";
+    Administrador *admin = new Administrador(petshop, "Adimênia");
+    petshop->getUsuarios().push_back(admin);
+    admin->cadastrarServico("Tosa", 200.0, 1);
+    admin->cadastrarServico("Banho", 50.0, 2);
+    admin->cadastrarProduto("Brinquedo de osso", 14.99, 20, 1);
+    admin->cadastrarProduto("Coleira", 24.99, 10, 2);
+    admin->cadastrarProduto("Brinquedo de bolinha", 9.99, 15, 3);
+
+    admin->cadastrarVeterinario("João Vitor Vaz", "Joao", "123", 2.49);
+    admin->cadastrarVendedor("Danielle", "Danielle", "123", 1100);
+
     return petshop;
 }

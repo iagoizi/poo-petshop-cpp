@@ -1,7 +1,7 @@
 #include "../hpp/veterinario.hpp"
 #include "../hpp/petshop.hpp"
 
-Veterinario::Veterinario(PetShop *petshop, string nome, string usuario, string senha, double salario) : Usuario(petshop, nome, VETERINARIO, usuario, senha)
+Veterinario::Veterinario(PetShop *petshop, string nome, string usuario, string senha, double salario) : Usuario(petshop, nome, VETERINARIO, usuario, senha, salario)
 {
 }
 

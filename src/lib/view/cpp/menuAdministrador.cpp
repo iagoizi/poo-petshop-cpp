@@ -130,7 +130,6 @@ void MenuAdministrador::menuListarFuncionarios()
 {
     printTitulo("Listando Funcionários...");
     Administrador *administrador = getAdministrador();
-    //Criar listar vendedores e veterinarios
     administrador->listarFuncionarios();
     esperarEnter();
 }

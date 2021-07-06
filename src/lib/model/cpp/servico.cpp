@@ -44,7 +44,8 @@ bool Servico::operator==(Servico servico)
     return this->id == servico.getId();
 }
 
-ostream &operator<<(ostream &os, const Servico &servico){
-    os << servico.id << " - " << servico.nome << "- R$" << servico.preco;
+ostream &operator<<(ostream &os, const Servico &servico)
+{
+    os << setw(7) << servico.id << " | " << setw(7) << servico.preco << " | " << servico.nome;
     return os;
 }

@@ -25,15 +25,15 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
     {
         descricaoCompra += to_string((*it).getQuantidade()) + "x " + (*it).getNome() + "(R$" + to_string((*it).getPreco()) + ")\n";
         preco += (*it).getPreco() * (*it).getQuantidade();
-        vector<Produto>::iterator itEstoque;
-        for (itEstoque = this->petshop->getProdutos().begin(); itEstoque != this->petshop->getProdutos().end(); itEstoque++)
+        vector<Produto>::iterator produtoEstoque;
+        for (produtoEstoque = this->petshop->getProdutos().begin(); produtoEstoque != this->petshop->getProdutos().end(); produtoEstoque++)
         {
-            if ((*it) == (*itEstoque))
+            if ((*it) == (*produtoEstoque))
             {
-                (*itEstoque).setQuantidade((*itEstoque).getQuantidade() - (*it).getQuantidade());
-                if ((*itEstoque).getQuantidade() < 0)
+                produtoEstoque->setQuantidade(produtoEstoque->getQuantidade() - it->getQuantidade());
+                if (produtoEstoque->getQuantidade() < 0)
                 {
-                    (*itEstoque).setQuantidade(0);
+                    produtoEstoque->setQuantidade(0);
                 }
             }
         }
@@ -65,10 +65,15 @@ Produto Vendedor::buscarProduto(long id, bool *success)
 }
 void Vendedor::listarProdutos()
 {
+    cout << setw(7) << "id"
+         << " | " << setw(7) << "Qtd"
+         << " | " << setw(7) << " Preço"
+         << "  | Nome" << endl;
     for (auto produto : this->petshop->getProdutos())
     {
         cout << produto << endl;
     }
+    cout << endl;
 }
 Servico Vendedor::buscarServico(long id, bool *success)
 {
@@ -85,8 +90,12 @@ Servico Vendedor::buscarServico(long id, bool *success)
 }
 void Vendedor::listarServicos()
 {
+    cout << setw(7) << "id"
+         << " | " << setw(7) << "Preço"
+         << "  | Nome" << endl;
     for (auto servico : this->petshop->getServicos())
     {
         cout << servico << endl;
     }
+    cout << endl;
 }

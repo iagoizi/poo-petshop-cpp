@@ -51,14 +51,11 @@ int Produto::getQuantidade()
 
 bool Produto::operator==(Produto produto)
 {
-    return this->nome == produto.getNome() &&
-           this->preco == produto.getPreco() &&
-           this->quantidade == produto.getQuantidade() &&
-           this->id == produto.getId();
+    return this->id == produto.getId();
 }
 ostream &operator<<(ostream &os, const Produto &produto)
 {
-    os << produto.id << " - " << produto.nome << "- R$" << produto.preco;
+    os << setw(7) << produto.id << " | " << setw(7) << produto.quantidade << " | " << setw(7) << produto.preco << " | " << produto.nome;
     return os;
 }
 Produto Produto::clone()

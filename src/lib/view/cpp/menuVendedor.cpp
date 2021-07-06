@@ -63,9 +63,11 @@ void MenuVendedor::menuCadastrarCliente()
         this->popUp = "Cadastro realizado com sucesso!";
     }
 }
+
 void MenuVendedor::menuVenderProduto()
 {
     printTitulo("Lista de produtos cadastrados:");
+
     Vendedor *vendedor = getVendedor();
     vendedor->listarProdutos();
 
@@ -73,23 +75,25 @@ void MenuVendedor::menuVenderProduto()
     int qtd = 0;
     bool success = false;
     vector<Produto> carrinho;
-    Produto produto, produtoCarrinho;
+    Produto produto;
+    string comando;
     do
     {
-        cout << "Deseja comprar o produto... (Para finalizar a compra, digite " << OPCODE_SAIDA << ")" << endl
-             << "\tId: ";
-        cin >> id;
-        if (id != OPCODE_SAIDA)
+        cout << "Deseja comprar o produto... (Se sim, digite 'sim'. Se não, digite 'não') " << endl;
+        cin >> comando;
+        if (comando.compare("sim") == 0)
         {
+            cout << "\tID: ";
+            cin >> id;
+
             produto = vendedor->buscarProduto(id, &success);
             if (success)
             {
                 cout << "\tQuantidade: ";
                 cin >> qtd;
-                cout << "Quantidade do produto em estoque: " << produto.getQuantidade() << "Qtd comprar: " << qtd << endl; //Retirar isso
                 if (qtd <= produto.getQuantidade())
                 {
-                    produtoCarrinho = produto.clone();
+                    Produto produtoCarrinho = produto.clone();
                     produtoCarrinho.setQuantidade(qtd);
                     carrinho.push_back(produtoCarrinho);
                 }
@@ -104,7 +108,7 @@ void MenuVendedor::menuVenderProduto()
             }
         }
         cout << endl;
-    } while (id != OPCODE_SAIDA);
+    } while (comando.compare("nao") != 0);
 
     if (!carrinho.empty())
     {
@@ -115,6 +119,7 @@ void MenuVendedor::menuVenderProduto()
         this->popUp = "Compra registrada com sucesso!";
     }
 }
+
 void MenuVendedor::menuVenderServico()
 {
     printTitulo("Lista de serviços cadastrados:");
@@ -164,7 +169,7 @@ void MenuVendedor::menuVenderServico()
 
 Cliente MenuVendedor::compradorPossuiCadastro(Vendedor *vendedor)
 {
-    cout << "Comprador tem cadastro? (Se sim, digite 'sim'. Senão, aperte qualquer valor) ";
+    cout << "Comprador tem cadastro? (Se sim, digite 'sim'. Se não, digite 'não') ";
     string sim;
     cin >> sim;
     /*A priori, o cliente é dado como desconhecido*/
@@ -215,6 +220,7 @@ void MenuVendedor::printMenu()
     cout << endl
          << endl;
 }
+
 void MenuVendedor::realizaOperacao(int op)
 {
     Menu::realizaOperacao(op);

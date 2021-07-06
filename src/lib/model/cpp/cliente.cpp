@@ -35,8 +35,8 @@ void Cliente::setNomePet(string nomePet)
     const char *novoNome = nomePet.data();
     int length = nomePet.size();
     length = (length < M ? length : M - 1);
-    strncpy(this->nome, novoNome, length);
-    this->nome[length] = '\0';
+    strncpy(this->nomePet, novoNome, length);
+    this->nomePet[length] = '\0';
 }
 void Cliente::setEndereco(string endereco)
 {
@@ -96,10 +96,9 @@ ostream &operator<<(ostream &out, Cliente &cliente)
 {
     out << "Cliente: " << cliente.getNome() << endl
         << "CPF: " << cliente.getCpf() << endl
-        << "Endereço: "
-        << cliente.getEndereco() << endl
+        << "Endereço: " << cliente.getEndereco() << endl
         << "Telefone: " << cliente.getTelefone() << endl
-        << "Pet: " << cliente.getNome() << endl
+        << "Pet: " << cliente.getNomePet() << endl
         << "Tipo do pet: " << cliente.getTipoAnimal() << endl
         << "Compras: " << endl;
     for (auto compra : cliente.compras)

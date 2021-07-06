@@ -3,14 +3,10 @@
 #include "lib/model/hpp/lib.hpp"
 #include "lib/model/hpp/petshop.hpp"
 #include "lib/view/hpp/menu.hpp"
-
-//Usado apenas nos testes
-
-#include "lib/model/hpp/vendedor.hpp"
-#include "lib/model/hpp/veterinario.hpp"
 #include "lib/model/hpp/administrador.hpp"
-#include "lib/model/hpp/cliente.hpp"
+#include "lib/model/hpp/produto.hpp"
+#include "lib/model/hpp/servico.hpp"
 
-PetShop *testes(string *usuarioTeste, string *senhaTeste);
+PetShop *initPetshop();
 
 #endif
