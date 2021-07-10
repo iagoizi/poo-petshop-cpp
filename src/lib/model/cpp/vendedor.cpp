@@ -62,9 +62,14 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
 
 void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
 {
-    vector<OrdemServico>::iterator last = this->petshop->getOrdemServico().end();
-    last--;
-    int id = last->getId() + 1;
+    int id = 0;
+    //Se o vetor não estiver vazio, passamos para o próximo id
+    if (!this->petshop->getOrdemServico().empty())
+    {
+        vector<OrdemServico>::iterator last = this->petshop->getOrdemServico().end();
+        last--;
+        id = last->getId() + 1;
+    }
 
     OrdemServico ordemservico = OrdemServico(servico, cliente, dataServico, id, "");
     this->petshop->getOrdemServico().push_back(ordemservico);

@@ -109,9 +109,8 @@ void Administrador::gerarRelatorio()
     if (!petshop->getHistoricoServico().empty())
     {
         empty = false;
-        cout << "\t\tSERVICOS JÁ REALIZADOS" << endl
-             << endl;
-        cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
+        cout << setw(20) << "Data e hora |" << setw(7) << " idOrdem "
+             << "|" << setw(7) << "idServiço"
              << "| " << setw(7) << "Preço"
              << "  | NomeServiço [Nome do cliente]" << endl;
         for (auto ordem : petshop->getHistoricoServico())
@@ -127,7 +126,8 @@ void Administrador::gerarRelatorio()
         empty = false;
         cout << "\t\tORDENS DE SERVIÇO (Serviços a serem realizados)" << endl
              << endl;
-        cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
+        cout << setw(20) << "Data e hora |" << setw(7) << " idOrdem "
+             << "|" << setw(7) << "idServiço"
              << "| " << setw(7) << "Preço"
              << "  | NomeServiço [Nome do cliente]" << endl;
         for (auto ordem : petshop->getOrdemServico())

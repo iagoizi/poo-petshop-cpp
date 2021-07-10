@@ -56,7 +56,6 @@ void OrdemServico::setObservacao(string observacao)
     this->observacao[length] = '\0';
 }
 
-
 int OrdemServico::getId()
 {
     return this->id;
@@ -69,14 +68,12 @@ void OrdemServico::setId(int id)
 //Fazendo comparação entre 2 IDs de serviços
 bool OrdemServico::operator==(OrdemServico comp)
 {
-    return this->servico == comp.getServico() &&
-           this->data == comp.getData() &&
-           this->cliente == comp.getCliente();
+    return this->id == comp.id;
 }
 
 ostream &operator<<(ostream &os, OrdemServico &ordem)
 {
-    os << ordem.data << " | " << ordem.servico << " [" << ordem.cliente.getNome() << "]";
+    os << ordem.data << " | " << setw(7) << ordem.id << " | " << ordem.servico << " [" << ordem.cliente.getNome() << "]";
     if (ordem.observacao[0] != '\0')
     {
         os << " (" << ordem.observacao << ")";
@@ -84,4 +81,3 @@ ostream &operator<<(ostream &os, OrdemServico &ordem)
 
     return os;
 }
-

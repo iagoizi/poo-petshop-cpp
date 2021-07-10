@@ -63,54 +63,30 @@ void MenuVeterinario::menuRegistrarTratamento()
     printTitulo("Cadastro de tratamento");
     Veterinario *veterinario = getVeterinario();
     int id;
-    //bool clienteCadastrado;
 
     printTitulo("ID da Ordem de Serviço:");
     cout << "\tID: ";
     cin >> id;
-    //Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
     bool resposta;
     OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &resposta);
 
     if (!resposta)
     {
-        printErro("Ordem de Serviço não cadastrado!");
+        printErro("Ordem de serviço não cadastrada!");
+        //Atualizando a mensagem de pop-up
+        this->popUp = "Ordem de serviço não encontrada";
     }
     else
     {
-        printTitulo("Dados da data da ordem de serviço agendada:");
-        Data dataAgendada;
-        int dia, mes, ano, hora, minuto;
-        cout << "\tHora: ";
-        cin >> hora;
-        cout << "\tMinuto: ";
-        cin >> minuto;
-        cout << "\tDia: ";
-        cin >> dia;
-        cout << "\tMes: ";
-        cin >> mes;
-        cout << "\tAno: ";
-        cin >> ano;
-        dataAgendada = Data(dia, mes, ano, hora, minuto);
-        bool ordemCadastrada;
-        OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &ordemCadastrada);
-        if (!ordemCadastrada)
-        {
-            printErro("Ordem de serviço não cadastrada!");
-            //Atualizando a mensagem de pop-up
-            this->popUp = "Ordem de serviço não encontrada";
-        }
-        else
-        {
-            cout << "Adicione uma observação relacionada ao tratamento: ";
-            string tratamento;
-            cin.ignore();
-            getline(cin, tratamento);
-            veterinario->registrarTratamento(ordemServico, tratamento);
-            //Atualizando a mensagem de pop-up
-            this->popUp = "Tratamento registrado com sucesso";
-        }
+        cout << "Adicione uma observação relacionada ao tratamento: ";
+        string tratamento;
+        cin.ignore();
+        getline(cin, tratamento);
+        veterinario->registrarTratamento(ordemServico, tratamento);
+        //Atualizando a mensagem de pop-up
+        this->popUp = "Tratamento registrado com sucesso";
     }
+
     cout << endl;
 }
 
