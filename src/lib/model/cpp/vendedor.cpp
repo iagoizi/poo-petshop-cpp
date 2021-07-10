@@ -50,7 +50,14 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
     Compra venda = Compra(descricaoCompra, preco);
     venda.pagar();
     this->petshop->getVendas().push_back(venda);
-    cliente.getCompras().push_back(venda);
+    for (vector<Cliente>::iterator it = this->petshop->getClientes().begin(); it < this->petshop->getClientes().end(); it++)
+    {
+        if (*it == cliente)
+        {
+            it->getCompras().push_back(venda);
+            ;
+        }
+    }
 }
 
 void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
