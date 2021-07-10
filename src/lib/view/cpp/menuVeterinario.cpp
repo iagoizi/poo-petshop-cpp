@@ -29,99 +29,6 @@ void MenuVeterinario::menuListarClientes()
     esperarEnter();
 }
 
-/*
-void MenuVeterinario::menuBuscarOrdensDeServico()
-{
-    printTitulo("Busca de ordens de serviços");
-    Veterinario *veterinario = getVeterinario();
-    long cpf;
-    bool clienteCadastrado;
-
-    printTitulo("Dados do cliente:");
-    cout << "\tCPF: ";
-    cin >> cpf;
-    Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
-    if (!clienteCadastrado)
-    {
-        this->popUp = "Cliente não cadastrado!";
-    }
-    else
-    {
-        printTitulo("Dados da data da ordem de serviço agendada:");
-        Data dataAgendada;
-        int dia, mes, ano, hora, minuto;
-        cout << "\tHora: ";
-        cin >> hora;
-        cout << "\tMinuto: ";
-        cin >> minuto;
-        cout << "\tDia: ";
-        cin >> dia;
-        cout << "\tMes: ";
-        cin >> mes;
-        cout << "\tAno: ";
-        cin >> ano;
-        dataAgendada = Data(dia, mes, ano, hora, minuto);
-        bool ordemCadastrada;
-        OrdemServico ordemServico = veterinario->buscarOrdemServico(cliente, dataAgendada, &ordemCadastrada);
-        if (!ordemCadastrada)
-        {
-            this->popUp = "Ordem de serviço não cadastrada!";
-        }
-        else
-        {
-            this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome() + "\n(" + to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano) + " - " + to_string(hora) + ":" + to_string(minuto);
-        }
-    }
-    cout << endl;
-}
-
-void MenuVeterinario::menuRegistrarTratamento()
-{
-    printTitulo("Cadastro de tratamento");
-    Veterinario *veterinario = getVeterinario();
-    long cpf;
-    bool clienteCadastrado;
-
-    printTitulo("Dados do cliente:");
-    cout << "\tCPF: ";
-    cin >> cpf;
-    Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
-    if (!clienteCadastrado)
-    {
-        printErro("Cliente não cadastrado!");
-    }
-    else
-    {
-        printTitulo("Dados da data da ordem de serviço agendada:");
-        Data dataAgendada;
-        int dia, mes, ano, hora, minuto;
-        cout << "\tHora: ";
-        cin >> hora;
-        cout << "\tMinuto: ";
-        cin >> minuto;
-        cout << "\tDia: ";
-        cin >> dia;
-        cout << "\tMes: ";
-        cin >> mes;
-        cout << "\tAno: ";
-        cin >> ano;
-        dataAgendada = Data(dia, mes, ano, hora, minuto);
-        bool ordemCadastrada;
-        OrdemServico ordemServico = veterinario->buscarOrdemServico(cliente, dataAgendada, &ordemCadastrada);
-        if (!ordemCadastrada)
-        {
-            printErro("Ordem de serviço não cadastrada!");
-        }
-        else
-        {
-            printTitulo("Ordem de serviço encontrada: ");
-            cout << ordemServico;
-        }
-    }
-    cout << endl;
-}
-*/
-
 void MenuVeterinario::menuBuscarOrdensDeServico()
 {
     printTitulo("Busca de ordens de serviços");
@@ -144,46 +51,9 @@ void MenuVeterinario::menuBuscarOrdensDeServico()
     else
     {
         //int dia, mes, ano, hora, minuto;
-        this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome() 
-       /* + "\n(" + to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano) + " - " + to_string(hora) + ":" + to_string(minuto)*/;
+        this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome();
     }
 
-    /*
-    Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
-    if (!clienteCadastrado)
-    {
-        this->popUp = "Cliente não cadastrado!";
-    }
-    else
-    {
-        printTitulo("Dados da data da ordem de serviço agendada:");
-        Data dataAgendada;
-        int dia, mes, ano, hora, minuto;
-        cout << "\tHora: ";
-        cin >> hora;
-        cout << "\tMinuto: ";
-        cin >> minuto;
-        cout << "\tDia: ";
-        cin >> dia;
-        cout << "\tMes: ";
-        cin >> mes;
-        cout << "\tAno: ";
-        cin >> ano;
-        dataAgendada = Data(dia, mes, ano, hora, minuto);
-        bool ordemCadastrada;
-        OrdemServico ordemServico = veterinario->buscarOrdemServico(cliente, Id ,dataAgendada, &ordemCadastrada);
-        if (!ordemCadastrada)
-        {
-            this->popUp = "Ordem de serviço não cadastrada!";
-        }
-        else
-        {
-            this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome() + "\n(" + to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano) + " - " + to_string(hora) + ":" + to_string(minuto);
-        }
-    }
-    */
-    
-    
     cout << endl;
 }
 
@@ -201,7 +71,7 @@ void MenuVeterinario::menuRegistrarTratamento()
     //Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
     bool resposta;
     OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &resposta);
-    
+
     if (!resposta)
     {
         printErro("Ordem de Serviço não cadastrado!");
@@ -227,16 +97,22 @@ void MenuVeterinario::menuRegistrarTratamento()
         if (!ordemCadastrada)
         {
             printErro("Ordem de serviço não cadastrada!");
+            //Atualizando a mensagem de pop-up
+            this->popUp = "Ordem de serviço não encontrada";
         }
         else
         {
-            printTitulo("Ordem de serviço encontrada: ");
-            cout << ordemServico;
+            cout << "Adicione uma observação relacionada ao tratamento: ";
+            string tratamento;
+            cin.ignore();
+            getline(cin, tratamento);
+            veterinario->registrarTratamento(ordemServico, tratamento);
+            //Atualizando a mensagem de pop-up
+            this->popUp = "Tratamento registrado com sucesso";
         }
     }
     cout << endl;
 }
-
 
 void MenuVeterinario::printMenu()
 {

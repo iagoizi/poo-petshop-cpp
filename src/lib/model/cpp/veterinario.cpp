@@ -9,26 +9,19 @@ Veterinario::~Veterinario(){};
 
 void Veterinario::registrarTratamento(OrdemServico &ordem, string tratamento)
 {
-    //Acessar ordem de servico e usar set observacao
-    ordem.setObservacao(tratamento);
-}
-
-/*
-OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada, bool *sucess)
-{
-
-    for (vector<OrdemServico>::iterator i = this->petshop->getOrdemServico().begin(); i != this->petshop->getOrdemServico().end(); i++)
+    //Removendo serviço da lista de serviços a serem feitos
+    for (vector<OrdemServico>::iterator it = this->petshop->getOrdemServico().begin(); it < this->petshop->getOrdemServico().end(); it++)
     {
-        if ((*i).getCliente() == cliente && (*i).getData() == dataAgendada)
+        if (*it == ordem)
         {
-            *sucess = true;
-            return *i;
+            cout << "Removendo" << endl;
+            this->petshop->getOrdemServico().erase(it);
         }
     }
-    *sucess = false;
-    return {};
+    //Acessar ordem de servico e usar set observacao
+    ordem.setObservacao(tratamento);
+    this->petshop->getHistoricoServico().push_back(ordem);
 }
-*/
 
 OrdemServico Veterinario::buscarOrdemServico(int id, bool *sucess)
 {

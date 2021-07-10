@@ -50,32 +50,25 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
     Compra venda = Compra(descricaoCompra, preco);
     venda.pagar();
     this->petshop->getVendas().push_back(venda);
-    cliente.getCompras().push_back(venda);
-}
-
-/*
-void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
-{
-    OrdemServico ordemservico = OrdemServico(servico, cliente, dataServico, "");
-    this->petshop->getOrdemServico().push_back(ordemservico);
-}
-*/
-
-void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
-{
-    int id;
-
-    //Percorrer a lista de ordens de serviço para pegar o numero da última ordem
-    for (vector<OrdemServico>::iterator i = this->petshop->getOrdemServico().begin(); i != this->petshop->getOrdemServico().end(); i++)
+    for (vector<Cliente>::iterator it = this->petshop->getClientes().begin(); it < this->petshop->getClientes().end(); it++)
     {
-        id = (*i).getId();
+        if (*it == cliente)
+        {
+            it->getCompras().push_back(venda);
+            ;
+        }
     }
-    id++;
-    
+}
+
+void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
+{
+    vector<OrdemServico>::iterator last = this->petshop->getOrdemServico().end();
+    last--;
+    int id = last->getId() + 1;
+
     OrdemServico ordemservico = OrdemServico(servico, cliente, dataServico, id, "");
     this->petshop->getOrdemServico().push_back(ordemservico);
 }
-
 
 Produto Vendedor::buscarProduto(long id, bool *success)
 {

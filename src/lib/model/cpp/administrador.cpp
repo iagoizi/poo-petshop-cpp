@@ -65,9 +65,11 @@ void Administrador::listarFuncionarios()
 
 void Administrador::gerarRelatorio()
 {
+    bool empty = true;
 
     if (!petshop->getContas().empty())
     {
+        empty = false;
         cout << "\t\tCONTAS" << endl
              << endl;
         for (auto conta : petshop->getContas())
@@ -77,12 +79,10 @@ void Administrador::gerarRelatorio()
         cout << endl
              << endl;
     }
-    else
-    {
-        cout << "-> Nenhuma conta paga até o momento." << endl;
-    }
+
     if (!petshop->getCompras().empty())
     {
+        empty = false;
         cout << "\t\tCOMPRAS" << endl
              << endl;
         for (auto compra : petshop->getCompras())
@@ -92,12 +92,10 @@ void Administrador::gerarRelatorio()
         cout << endl
              << endl;
     }
-    else
-    {
-        cout << "-> Nenhuma compra feita até o momento." << endl;
-    }
+
     if (!petshop->getVendas().empty())
     {
+        empty = false;
         cout << "\t\tVENDAS" << endl
              << endl;
         for (auto venda : petshop->getVendas())
@@ -107,13 +105,10 @@ void Administrador::gerarRelatorio()
         cout << endl
              << endl;
     }
-    else
-    {
-        cout << "-> Nenhuma venda realizada até o momento." << endl;
-    }
 
     if (!petshop->getHistoricoServico().empty())
     {
+        empty = false;
         cout << "\t\tSERVICOS JÁ REALIZADOS" << endl
              << endl;
         cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
@@ -126,13 +121,10 @@ void Administrador::gerarRelatorio()
         cout << endl
              << endl;
     }
-    else
-    {
-        cout << "-> Nenhum serviço realizado até o momento." << endl;
-    }
 
     if (!petshop->getOrdemServico().empty())
     {
+        empty = false;
         cout << "\t\tORDENS DE SERVIÇO (Serviços a serem realizados)" << endl
              << endl;
         cout << setw(20) << "Data e hora |" << setw(7) << "idServiço"
@@ -145,9 +137,11 @@ void Administrador::gerarRelatorio()
         cout << endl
              << endl;
     }
-    else
+
+    if (empty)
     {
-        cout << "-> Nenhum serviço agendado." << endl;
+        cout << "Nada para mostrar no relatório" << endl
+             << endl;
     }
 }
 
