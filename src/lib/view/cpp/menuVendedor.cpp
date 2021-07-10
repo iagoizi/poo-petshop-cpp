@@ -26,7 +26,7 @@ Cliente MenuVendedor::menuCadastrarCliente()
     Vendedor *vendedor = getVendedor();
     string nome,
         nomePet, tipoAnimal, endereco;
-    int tel;
+    long tel;
     long cpf;
     /*Pegando as informações do usuário*/
     cout << "Cliente" << endl

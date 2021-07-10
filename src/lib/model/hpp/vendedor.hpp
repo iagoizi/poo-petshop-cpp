@@ -17,7 +17,7 @@ public:
     ~Vendedor();
 
     /*Cadastra um novo cliente, o adicionando no vetor de clientes do petshop*/
-    Cliente cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf);
+    Cliente cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, long telefone, long cpf);
     /*Registra uma venda de produtos para um determinado cliente*/
     void vendaProduto(Cliente &cliente, vector<Produto> carrinho);
     /*Registra uma venda de um serviço para um determinado cliente*/

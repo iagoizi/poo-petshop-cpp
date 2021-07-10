@@ -1,6 +1,6 @@
 #include "../hpp/cliente.hpp"
 
-Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco, int telefone, long cpf,
+Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco, long telefone, long cpf,
                  vector<Compra> compras)
 {
     setNome(nome);
@@ -46,7 +46,7 @@ void Cliente::setEndereco(string endereco)
     strncpy(this->endereco, novoEndereco, length);
     this->endereco[length] = '\0';
 }
-void Cliente::setTelefone(int telefone)
+void Cliente::setTelefone(long telefone)
 {
     this->telefone = telefone;
 }
@@ -74,7 +74,7 @@ string Cliente::getEndereco()
 {
     return this->endereco;
 }
-int Cliente::getTelefone()
+long Cliente::getTelefone()
 {
     return this->telefone;
 }

@@ -24,7 +24,7 @@ int main()
             menu->realizaOperacao(op);
         }
         cout << "Fechar o programa? Se sim, digite " << OPCODE_SAIDA
-             << ". Se quiser continuar, digite qualquer valor:  " << endl;
+             << ". Se quiser continuar, digite qualquer algarismo:  " << endl;
         cin >> op;
     }
     return 0;

@@ -8,7 +8,7 @@ Vendedor::Vendedor(PetShop *petshop, string nome, string usuario, string senha, 
 
 Vendedor::~Vendedor() {}
 
-Cliente Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, int telefone, long cpf)
+Cliente Vendedor::cadastrarCliente(string nome, string tipo_animal, string nome_pet, string endereco, long telefone, long cpf)
 {
     Cliente cliente = Cliente(nome, tipo_animal, nome_pet, endereco, telefone, cpf);
     cout << this->petshop->getNome() << endl;

@@ -11,12 +11,12 @@ class Cliente
     char tipoAnimal[M];
     char nomePet[M];
     char endereco[M10];
-    int telefone;
+    long telefone;
     long cpf;
     vector<Compra> compras;
 
 public:
-    Cliente(string nome = "", string tipoAnimal = "", string nomePet = "", string endereco = "", int telefone = 0,
+    Cliente(string nome = "", string tipoAnimal = "", string nomePet = "", string endereco = "", long telefone = 0,
             long cpf = 0, vector<Compra> compras = {});
     ~Cliente();
 
@@ -24,14 +24,14 @@ public:
     void setTipoAnimal(string tipoAnimal);
     void setNomePet(string nomePet);
     void setEndereco(string endereco);
-    void setTelefone(int telefone);
+    void setTelefone(long telefone);
     void setCpf(long cpf);
     void setCompras(vector<Compra> compras);
     string getNome();
     string getTipoAnimal();
     string getNomePet();
     string getEndereco();
-    int getTelefone();
+    long getTelefone();
     long getCpf();
     vector<Compra> &getCompras();
 

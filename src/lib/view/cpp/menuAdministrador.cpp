@@ -31,7 +31,8 @@ void MenuAdministrador::menuCadastrarVendedor()
 
     cout << "Vendedor" << endl
          << "\tNome: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
     cout << "\tUsuário: ";
     cin >> usuario;
     cout << "\tSenha: ";
@@ -54,7 +55,8 @@ void MenuAdministrador::menuCadastrarVeterinario()
 
     cout << "Veterinário" << endl
          << "\tNome: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
     cout << "\tUsuário: ";
     cin >> usuario;
     cout << "\tSenha: ";
@@ -76,7 +78,8 @@ void MenuAdministrador::menuCadastrarProdutos()
 
     cout << "Produto" << endl
          << "\tNome: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
     cout << "\tPreço: ";
     cin >> preco;
     cout << "\tQuantidade: ";
