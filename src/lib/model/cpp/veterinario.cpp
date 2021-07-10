@@ -9,8 +9,18 @@ Veterinario::~Veterinario(){};
 
 void Veterinario::registrarTratamento(OrdemServico &ordem, string tratamento)
 {
+    //Removendo serviço da lista de serviços a serem feitos
+    for (vector<OrdemServico>::iterator it = this->petshop->getOrdemServico().begin(); it < this->petshop->getOrdemServico().end(); it++)
+    {
+        if (*it == ordem)
+        {
+            cout << "Removendo" << endl;
+            this->petshop->getOrdemServico().erase(it);
+        }
+    }
     //Acessar ordem de servico e usar set observacao
     ordem.setObservacao(tratamento);
+    this->petshop->getHistoricoServico().push_back(ordem);
 }
 
 OrdemServico Veterinario::buscarOrdemServico(Cliente cliente, Data dataAgendada, bool *sucess)
