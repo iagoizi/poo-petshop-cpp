@@ -108,11 +108,18 @@ void MenuVeterinario::menuRegistrarTratamento()
         if (!ordemCadastrada)
         {
             printErro("Ordem de serviço não cadastrada!");
+            //Atualizando a mensagem de pop-up
+            this->popUp = "Ordem de serviço não encontrada";
         }
         else
         {
-            printTitulo("Ordem de serviço encontrada: ");
-            cout << ordemServico;
+            cout << "Adicione uma observação relacionada ao tratamento: ";
+            string tratamento;
+            cin.ignore();
+            getline(cin, tratamento);
+            veterinario->registrarTratamento(ordemServico, tratamento);
+            //Atualizando a mensagem de pop-up
+            this->popUp = "Tratamento registrado com sucesso";
         }
     }
     cout << endl;
