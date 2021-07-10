@@ -53,11 +53,29 @@ void Vendedor::vendaProduto(Cliente &cliente, vector<Produto> carrinho)
     cliente.getCompras().push_back(venda);
 }
 
+/*
 void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
 {
     OrdemServico ordemservico = OrdemServico(servico, cliente, dataServico, "");
     this->petshop->getOrdemServico().push_back(ordemservico);
 }
+*/
+
+void Vendedor::vendaServico(Cliente cliente, Servico servico, Data dataServico)
+{
+    int id;
+
+    //Percorrer a lista de ordens de serviço para pegar o numero da última ordem
+    for (vector<OrdemServico>::iterator i = this->petshop->getOrdemServico().begin(); i != this->petshop->getOrdemServico().end(); i++)
+    {
+        id = (*i).getId();
+    }
+    id++;
+    
+    OrdemServico ordemservico = OrdemServico(servico, cliente, dataServico, id, "");
+    this->petshop->getOrdemServico().push_back(ordemservico);
+}
+
 
 Produto Vendedor::buscarProduto(long id, bool *success)
 {
@@ -72,6 +90,7 @@ Produto Vendedor::buscarProduto(long id, bool *success)
     *success = false;
     return {};
 }
+
 void Vendedor::listarProdutos()
 {
     cout << setw(7) << "id"
@@ -84,6 +103,7 @@ void Vendedor::listarProdutos()
     }
     cout << endl;
 }
+
 Servico Vendedor::buscarServico(long id, bool *success)
 {
     for (auto servico : this->petshop->getServicos())
@@ -97,6 +117,7 @@ Servico Vendedor::buscarServico(long id, bool *success)
     *success = false;
     return {};
 }
+
 void Vendedor::listarServicos()
 {
     cout << setw(7) << "id"

@@ -28,6 +28,8 @@ void MenuVeterinario::menuListarClientes()
     veterinario->listarClientes();
     esperarEnter();
 }
+
+/*
 void MenuVeterinario::menuBuscarOrdensDeServico()
 {
     printTitulo("Busca de ordens de serviços");
@@ -72,6 +74,7 @@ void MenuVeterinario::menuBuscarOrdensDeServico()
     }
     cout << endl;
 }
+
 void MenuVeterinario::menuRegistrarTratamento()
 {
     printTitulo("Cadastro de tratamento");
@@ -117,6 +120,123 @@ void MenuVeterinario::menuRegistrarTratamento()
     }
     cout << endl;
 }
+*/
+
+void MenuVeterinario::menuBuscarOrdensDeServico()
+{
+    printTitulo("Busca de ordens de serviços");
+    Veterinario *veterinario = getVeterinario();
+    int id;
+    //long cpf;
+    //bool clienteCadastrado;
+    Cliente cliente;
+
+    printTitulo("Digite o ID da ordem de serviço:");
+    cout << "\tID: ";
+    cin >> id;
+
+    bool ordemCadastrada;
+    OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &ordemCadastrada);
+    if (!ordemCadastrada)
+    {
+        this->popUp = "Ordem de serviço não cadastrada!";
+    }
+    else
+    {
+        //int dia, mes, ano, hora, minuto;
+        this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome() 
+       /* + "\n(" + to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano) + " - " + to_string(hora) + ":" + to_string(minuto)*/;
+    }
+
+    /*
+    Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
+    if (!clienteCadastrado)
+    {
+        this->popUp = "Cliente não cadastrado!";
+    }
+    else
+    {
+        printTitulo("Dados da data da ordem de serviço agendada:");
+        Data dataAgendada;
+        int dia, mes, ano, hora, minuto;
+        cout << "\tHora: ";
+        cin >> hora;
+        cout << "\tMinuto: ";
+        cin >> minuto;
+        cout << "\tDia: ";
+        cin >> dia;
+        cout << "\tMes: ";
+        cin >> mes;
+        cout << "\tAno: ";
+        cin >> ano;
+        dataAgendada = Data(dia, mes, ano, hora, minuto);
+        bool ordemCadastrada;
+        OrdemServico ordemServico = veterinario->buscarOrdemServico(cliente, Id ,dataAgendada, &ordemCadastrada);
+        if (!ordemCadastrada)
+        {
+            this->popUp = "Ordem de serviço não cadastrada!";
+        }
+        else
+        {
+            this->popUp = "Ordem de serviço encontrada: " + cliente.getNome() + " - " + ordemServico.getServico().getNome() + "\n(" + to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano) + " - " + to_string(hora) + ":" + to_string(minuto);
+        }
+    }
+    */
+    
+    
+    cout << endl;
+}
+
+//Corrigir Registrar Tratamento
+void MenuVeterinario::menuRegistrarTratamento()
+{
+    printTitulo("Cadastro de tratamento");
+    Veterinario *veterinario = getVeterinario();
+    int id;
+    //bool clienteCadastrado;
+
+    printTitulo("ID da Ordem de Serviço:");
+    cout << "\tID: ";
+    cin >> id;
+    //Cliente cliente = veterinario->buscarCadastro(cpf, &clienteCadastrado);
+    bool resposta;
+    OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &resposta);
+    
+    if (!resposta)
+    {
+        printErro("Ordem de Serviço não cadastrado!");
+    }
+    else
+    {
+        printTitulo("Dados da data da ordem de serviço agendada:");
+        Data dataAgendada;
+        int dia, mes, ano, hora, minuto;
+        cout << "\tHora: ";
+        cin >> hora;
+        cout << "\tMinuto: ";
+        cin >> minuto;
+        cout << "\tDia: ";
+        cin >> dia;
+        cout << "\tMes: ";
+        cin >> mes;
+        cout << "\tAno: ";
+        cin >> ano;
+        dataAgendada = Data(dia, mes, ano, hora, minuto);
+        bool ordemCadastrada;
+        OrdemServico ordemServico = veterinario->buscarOrdemServico(id, &ordemCadastrada);
+        if (!ordemCadastrada)
+        {
+            printErro("Ordem de serviço não cadastrada!");
+        }
+        else
+        {
+            printTitulo("Ordem de serviço encontrada: ");
+            cout << ordemServico;
+        }
+    }
+    cout << endl;
+}
+
 
 void MenuVeterinario::printMenu()
 {
@@ -129,6 +249,7 @@ void MenuVeterinario::printMenu()
     cout << endl
          << endl;
 }
+
 void MenuVeterinario::realizaOperacao(int op)
 {
     Menu::realizaOperacao(op);

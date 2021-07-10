@@ -18,8 +18,8 @@ public:
     void registrarTratamento(OrdemServico &ordem, string tratamento);
 
     /*Busca uma ordem de servico a partir do Cliente e da data marcada*/
-    OrdemServico buscarOrdemServico(Cliente cliente, Data dataAgendada, bool *sucess);
-
+    OrdemServico buscarOrdemServico(/*Cliente cliente,*/ /*Data dataAgendada,*/ int id, bool *sucess);
+    
     /*Lista todos os serviços ainda não realizados*/
     void listarOrdemServico();
     /*Lista os clientes cadastros*/

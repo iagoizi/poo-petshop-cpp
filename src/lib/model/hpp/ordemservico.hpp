@@ -13,10 +13,11 @@ protected:
     Servico servico;
     Cliente cliente;
     Data data;
+    int id;
     char observacao[M];
 
 public:
-    OrdemServico(Servico servico = {}, Cliente cliente = {}, Data data = 0, string observacao = "");
+    OrdemServico(Servico servico = {}, Cliente cliente = {}, Data data = 0,  int id = 0, string observacao = "");
     ~OrdemServico();
 
     Servico getServico();
@@ -28,6 +29,9 @@ public:
     void setCliente(Cliente);
     void setData(Data);
     void setObservacao(string);
+
+    int getId();
+    void setId(int);
 
     /*Se as ordens de serviço tiverem mesmo cliente, serviço e data, eles são iguais*/
     bool operator==(OrdemServico);

@@ -1,10 +1,11 @@
 #include "../hpp/ordemservico.hpp"
 
-OrdemServico::OrdemServico(Servico servico, Cliente cliente, Data data, string observacao)
+OrdemServico::OrdemServico(Servico servico, Cliente cliente, Data data, int id, string observacao)
 {
     setServico(servico);
     setCliente(cliente);
     setData(data);
+    setId(id);
     setObservacao(observacao);
 }
 
@@ -55,6 +56,16 @@ void OrdemServico::setObservacao(string observacao)
     this->observacao[length] = '\0';
 }
 
+
+int OrdemServico::getId()
+{
+    return this->id;
+}
+
+void OrdemServico::setId(int id)
+{
+    this->id = id;
+}
 //Fazendo comparação entre 2 IDs de serviços
 bool OrdemServico::operator==(OrdemServico comp)
 {
@@ -73,3 +84,4 @@ ostream &operator<<(ostream &os, OrdemServico &ordem)
 
     return os;
 }
+

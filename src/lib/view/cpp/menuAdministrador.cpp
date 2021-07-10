@@ -110,7 +110,8 @@ void MenuAdministrador::menuCadastrarServicos()
 
     cout << "Serviço" << endl
          << "\tNome: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
     cout << "\tPreço: ";
     cin >> preco;
     cout << "\tId: ";
