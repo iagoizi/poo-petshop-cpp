@@ -22,7 +22,7 @@ PetShop *Menu::getPetshop()
 void Menu::printMenu()
 {
     //Limpando a tela.
-    cout << string(3, '\n');
+    cout << string(20, '\n');
     //Imprime a mensagem de pop-up (caso não esteja vazia).
     cout << (!this->popUp.empty() ? ("(" + this->popUp + ")") : "") << endl
          << endl;

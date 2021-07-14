@@ -17,11 +17,15 @@ class MenuVendedor : virtual public Menu
 {
     /*Pega o usuário logado no momento e faz um cast para que possamos acessar suas funcionalidades específicas*/
     Vendedor *getVendedor();
+    /*Pergunta se o comprador possui cadastro e, em caso negativo, dá a opção de realizar o cadastro.*/
     Cliente compradorPossuiCadastro(Vendedor *vendedor);
 
 protected:
+    /*Faz as impressões, entradas e saídas referentes ao cadastro do cliente*/
     Cliente menuCadastrarCliente();
+    /*Faz as impressões, entradas e saídas referentes à venda de um produto*/
     void menuVenderProduto();
+    /*Faz as impressões, entradas e saídas referentes à venda/agendamento de um serviço*/
     void menuVenderServico();
 
 public:

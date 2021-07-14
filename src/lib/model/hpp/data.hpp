@@ -25,6 +25,7 @@ public:
     int getMinuto();
     bool operator==(Data);
     friend ostream &operator<<(ostream &os, const Data &data);
+    //Seta os dados da data equivalentes a data atual (sem horas e sem minutos)
     void now();
 };
 

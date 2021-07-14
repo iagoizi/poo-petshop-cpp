@@ -31,7 +31,7 @@ Cliente MenuVendedor::menuCadastrarCliente()
     /*Pegando as informações do usuário*/
     cout << "Cliente" << endl
          << "\tNome: ";
-    //cin.getline(nome, 50);
+    //Ignoramos o que estiver na entrada até esse momento ("lixo")
     cin.ignore();
     getline(cin, nome);
     cout << "\tEndereço: ";
@@ -194,6 +194,7 @@ Cliente MenuVendedor::compradorPossuiCadastro(Vendedor *vendedor)
             cout << "-> Cliente não cadastrado" << endl;
         }
     }
+    //Se o cliente não estiver cadastrado, damos a opção de cadastrá-lo
     cout << "Criar cadastro?  (Se sim, digite 'sim'. Senão, digite 'nao') ";
     cin >> sim;
     if (sim.compare("sim") == 0)
