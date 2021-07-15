@@ -118,3 +118,10 @@ Para resolver esse problema, usamos **o recurso de implementação tardia (*forw
 - [Why can’t static_cast be used to down-cast when virtual inheritance is involved?](https://stackoverflow.com/questions/7484913/why-cant-static-cast-be-used-to-down-cast-when-virtual-inheritance-is-involved).
 
 - [Downcast in a diamond hierarchy](https://stackoverflow.com/questions/6044527/downcast-in-a-diamond-hierarchy).
+
+# Made with :heart: by
+
+- [Danielle Emely de Souza Almeida](https://github.com/DanielleEmely)
+- [Danilo César Silva Soares](https://github.com/Cesar-Danilo)
+- [Iago Izidório Lacerda](https://github.com/iagoizi)
+- [João Vítor dos Santos Vaz](https://github.com/joaovitorvaz)
