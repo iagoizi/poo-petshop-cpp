@@ -6,23 +6,26 @@
 #include "cliente.hpp"
 #include "usuario.hpp"
 
+/*Classe que herda funções e atributos da classe usuario*/
 class Veterinario : virtual public Usuario
 {
 
 public:
-    /*Todos os campos são obrigatórios com exceção do salário*/
+    /*Construtor de veterinario -> Todos os campos são obrigatórios com exceção do salário*/
     Veterinario(PetShop *petshop, string nome, string usuario, string senha, double salario = 0.0);
+    /*Destrutor de veterinario */
     ~Veterinario();
 
     /*Registra o tratamento recomendado e move o serviço para o histórico*/
     void registrarTratamento(OrdemServico &ordem, string tratamento);
 
-    /*Busca uma ordem de servico a partir do Cliente e da data marcada*/
-    OrdemServico buscarOrdemServico(/*Cliente cliente,*/ /*Data dataAgendada,*/ int id, bool *sucess);
+    /*Busca uma ordem de servico a partir do Id da ordem de servico*/
+    OrdemServico buscarOrdemServico(int id, bool *sucess);
     
-    /*Lista todos os serviços ainda não realizados*/
+    /*Lista todos as ordens de serviços ainda não realizados*/
     void listarOrdemServico();
-    /*Lista os clientes cadastros*/
+
+    /*Lista os clientes cadastrados*/
     void listarClientes();
 };
 

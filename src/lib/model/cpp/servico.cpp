@@ -20,6 +20,7 @@ void Servico::setNome(string nome)
     strncpy(this->nome, novoNome, length); //Copiar a string para outra variável
     this->nome[length] = '\0';
 }
+
 void Servico::setPreco(double preco)
 {
     this->preco = preco;
@@ -28,7 +29,6 @@ void Servico::setId(long id)
 {
     this->id = id;
 }
-
 string Servico::getNome()
 {
     return this->nome;
