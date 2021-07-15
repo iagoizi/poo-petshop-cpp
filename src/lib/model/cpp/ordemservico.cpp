@@ -1,7 +1,9 @@
 #include "../hpp/ordemservico.hpp"
 
+//Construtor de Ordem de Servico
 OrdemServico::OrdemServico(Servico servico, Cliente cliente, Data data, int id, string observacao)
 {
+    //instancia os atributos do objeto utilizando as funções setters
     setServico(servico);
     setCliente(cliente);
     setData(data);
@@ -9,6 +11,7 @@ OrdemServico::OrdemServico(Servico servico, Cliente cliente, Data data, int id, 
     setObservacao(observacao);
 }
 
+//Destrutor de Ordem de Servico
 OrdemServico::~OrdemServico(){};
 
 Servico OrdemServico::getServico()
@@ -46,12 +49,12 @@ void OrdemServico::setData(Data data)
     this->data = data;
 }
 
+/*Converte a string em um vetor de char*/
 void OrdemServico::setObservacao(string observacao)
 {
-
     const char *novaObservacao = observacao.data(); //Pegar um vetor de char como string
     int length = observacao.size();                 //Pegar o tamanho do vetor
-    length = (length < M ? length : M - 1);
+    length = (length < M ? length : M - 1);         
     strncpy(this->observacao, novaObservacao, length); //Copiar a string para outra variável
     this->observacao[length] = '\0';
 }
@@ -71,6 +74,7 @@ bool OrdemServico::operator==(OrdemServico comp)
     return this->id == comp.id;
 }
 
+//Mostra no terminal os dados da ordem de servico, devidamente estruturados
 ostream &operator<<(ostream &os, OrdemServico &ordem)
 {
     os << ordem.data << " | " << setw(7) << ordem.id << " | " << ordem.servico << " [" << ordem.cliente.getNome() << "]";
