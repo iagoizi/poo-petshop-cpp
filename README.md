@@ -3,7 +3,7 @@
 ## Descrição do projeto
 
     Projeto desenvolvido como atividade avaliativa da disciplina BCC221 UFOP. 
-O presente trabalho prático foi idealizado por meio da linguagem de programação C++, uma das principais linguagens na área de desenvolvimento de software. Além disso, é um projeto construído utilizando **os paradigmas de Programação Orientada a Objetos**, cujo principal objetivo é facilitar modelagens e o desenvolvimento de sistemas, já que possui uma maior aproximação com a vida real. Além disso, buscamos seguir os princípios **SOLID** com o objetivo de facilitar a manutenção e estensão do projeto.
+O presente trabalho prático foi idealizado por meio da linguagem de programação C++, uma das principais linguagens na área de desenvolvimento de software. Além disso, é um projeto construído utilizando **os paradigmas de Programação Orientada a Objetos**, cujo principal objetivo é facilitar modelagens e o desenvolvimento de sistemas, já que possui uma maior aproximação com a vida real. Além disso, buscamos seguir os princípios [SOLID](https://link.medium.com/YyTdvfd3Mhb) com o objetivo de facilitar a manutenção e estensão do projeto.
 
 O projeto consiste na implementação de um sistema de **controle e gerenciamento de uma loja Pet Shop**. Para isso, foi construído o diagrama UML, sendo este o principal responsável pelo norteamento da implementação das classes do sistema, assim como seus atributos e métodos. Além disso, por meio do UML, a visualização da comunicação entre cada classe tornou-se ainda mais clara. 
 
@@ -78,7 +78,7 @@ Para facilitar testes, alguns produtos (osso, coleira, bolinha), serviços (tosa
 
 - ### **Classes separadas para os menus**
 
-No lugar de colocar a visualização dos dados e menus de cada usuário dentro do próprio usuário, decidimos colocar isso em classes separadas buscando seguir os príncipios SOLID. Dessa maneira, as classes Veterinario, Vendedor, Administrador e Usuario se tornam **mais reutilizáveis independentemente da camada de visualização dos dados** que coloquemos por cima delas. Isso facilitará, e muito, na hora de substituir a visualização de dados que temos no momento por algo mais interessante como uma interface gráfica.
+No lugar de colocar a visualização dos dados e menus de cada usuário dentro do próprio usuário, decidimos colocar isso em classes separadas buscando seguir os príncipios [SOLID](https://link.medium.com/YyTdvfd3Mhb). Dessa maneira, as classes Veterinario, Vendedor, Administrador e Usuario se tornam **mais reutilizáveis independentemente da camada de visualização dos dados** que coloquemos por cima delas. Isso facilitará, e muito, na hora de substituir a visualização de dados que temos no momento por algo mais interessante como uma interface gráfica.
 
 - ### **Classe Petshop como um agregado de atributos**
 
@@ -87,15 +87,14 @@ Decidimos criar a classe PetShop de maneira que ela permitisse acessar todos os 
 ## Dificuldades encontradas
 
 Quando se trabalha com Programação Orientada a Objetos em C++, é comum acabar se deparando com alguns problemas e, nessa atividade, não foi diferente. 
-O famoso **Problema do Diamante** apareceu logo no início da implementação, uma vez que, segundo nossa arquitetura, a classe Administrador herda tanto de Veterinário quanto de Vendedor e ambas herdam de Usuário. 
+O famoso [Problema do Diamante](https://pencilprogrammer.com/cpp-tutorials/virtual-inheritance/) apareceu logo no início da implementação, uma vez que, segundo nossa arquitetura, a classe Administrador herda tanto de Veterinário quanto de Vendedor e ambas herdam de Usuário. 
 Com isso, na hora de acessar os membros de Usuário a partir de um objeto Administrador, o compilador ficava confuso sobre qual dos caminhos seguir. 
 Para resolver esse problema, tivemos que usar **herança virtual**, uma vez que ela garante que apenas uma instância dos membros da classe base seja associada ao objeto da classe "neta". 
 Além de estar presente no Administrador, esse problema também ocorreu na classe MenuAdministrador, já que ela herda de MenuVendedor e MenuVeterinario e ambas herdam de Menu.
 
-Um outro problema associado ao Problema do Diamante aconteceu na hora de fazer o downcast da classe Usuário e Menu para uma de suas classes filhas. Na hora de fazer o **downcast com base virtual** numa hierarquia diamante, encontramos um problema. Estávamos tentando fazer o *casting* usando *static_cast*, mas o compilador sempre acusava erro. Depois de muito pesquisar, descobrimos que, nesse caso, como estamos lidando com **polimorfismo** e é necessário informação em tempo de execução, devemos usar *dynamic_cast*.
+Um outro problema associado ao Problema do Diamante aconteceu na hora de fazer o downcast da classe Usuário e Menu para uma de suas classes filhas. Na hora de fazer o **downcast com base virtual** numa hierarquia diamante, encontramos um problema. Estávamos tentando fazer o *casting* usando *static_cast*, mas o compilador sempre acusava erro. Depois de muito pesquisar, descobrimos que, nesse caso, como estamos lidando com **polimorfismo** e é necessário informação em tempo de execução, devemos usar [*dynamic_cast*](https://www.tutorialspoint.com/dynamic-cast-and-static-cast-in-cplusplus).
 
-Além do Problema do Diamante e dos problemas relacionados ao downcast com base virtual, nos deparamos com **referências cíclicas (dependências circulares)**. 
-A Classe Usuário precisava saber de Petshop, uma vez que um de seus atributos é da classe Petshop e, com isso, ela precisava de uma implementação completa de Petshop para conseguir alocar o espaço necessário para aquele atributo. 
+Além do Problema do Diamante e dos problemas relacionados ao downcast com base virtual, nos deparamos com [referências cíclicas (dependências circulares)](https://pvigier.github.io/2018/02/09/dependency-graph.html). A Classe Usuário precisava saber de Petshop, uma vez que um de seus atributos é da classe Petshop e, com isso, ela precisava de uma implementação completa de Petshop para conseguir alocar o espaço necessário para aquele atributo. 
 Porém, Petshop também precisava conhecer a implementação completa de Usuário, já que ela possui um atributo da classe Usuário. 
 Sem conseguir encontrar implementações completas dessas duas classes, o compilador lançava uma mensagem de erro e dizia que os tipos estavam incompletos. 
 Para resolver esse problema, usamos **o recurso de implementação tardia (*forward declarations*)** e mudamos os atributos problemáticos dessas classes para ponteiros.
