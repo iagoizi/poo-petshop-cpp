@@ -14,7 +14,13 @@ O projeto consiste na implementação de um sistema de **controle e gerenciament
 
 ## Instruções de compilação e execução
 
+Para compilar e executar o programa, basta clonar esse repositório e executar os seguintes comandos:
 
+```
+cd src
+make
+make run
+```
 ## Descrição da arquitetura
 
 ![Diagrama completo](https://i.imgur.com/00ka42C.jpg)
