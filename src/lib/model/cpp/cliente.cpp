@@ -3,6 +3,7 @@
 Cliente::Cliente(string nome, string tipoAnimal, string nomePet, string endereco, long telefone, long cpf,
                  vector<Compra> compras)
 {
+    /*instância os valores do objeto por meio dos métodos setters*/
     setNome(nome);
     setTipoAnimal(tipoAnimal);
     setNomePet(nomePet);
@@ -16,6 +17,8 @@ Cliente::~Cliente() {}
 
 void Cliente::setNome(string nome)
 {
+      /*realiza a conversão de string para char 
+      para setar o nome*/
     const char *novoNome = nome.data();
     int length = nome.size();
     length = (length < M ? length : M - 1);
@@ -24,6 +27,8 @@ void Cliente::setNome(string nome)
 }
 void Cliente::setTipoAnimal(string tipoAnimal)
 {
+      /*realiza a conversão de string para char 
+      para setar o tipo do animal*/
     const char *novoAnimal = tipoAnimal.data();
     int length = tipoAnimal.size();
     length = (length < M ? length : M - 1);
@@ -32,6 +37,8 @@ void Cliente::setTipoAnimal(string tipoAnimal)
 }
 void Cliente::setNomePet(string nomePet)
 {
+      /*realiza a conversão de string para char 
+      para setar o nome pet*/
     const char *novoNome = nomePet.data();
     int length = nomePet.size();
     length = (length < M ? length : M - 1);
@@ -40,6 +47,8 @@ void Cliente::setNomePet(string nomePet)
 }
 void Cliente::setEndereco(string endereco)
 {
+      /*realiza a conversão de string para char 
+      para setar o endereço*/
     const char *novoEndereco = endereco.data();
     int length = endereco.size();
     length = (length < M10 ? length : M10 - 1);
@@ -86,12 +95,12 @@ vector<Compra> &Cliente::getCompras()
 {
     return this->compras;
 }
-//Um cliente é o mesmo quando o cpf é igual
+/*Um cliente é o mesmo quando o cpf é igual*/
 bool Cliente::operator==(Cliente cliente)
 {
     return this->cpf == cliente.getCpf();
 }
-
+/*Saída formada das informações que o cliente possui*/
 ostream &operator<<(ostream &out, Cliente &cliente)
 {
     out << "Cliente: " << cliente.getNome() << endl
