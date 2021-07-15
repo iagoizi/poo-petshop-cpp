@@ -99,3 +99,25 @@ A Classe Usuário precisava saber de Petshop, uma vez que um de seus atributos �
 Porém, Petshop também precisava conhecer a implementação completa de Usuário, já que ela possui um atributo da classe Usuário. 
 Sem conseguir encontrar implementações completas dessas duas classes, o compilador lançava uma mensagem de erro e dizia que os tipos estavam incompletos. 
 Para resolver esse problema, usamos **o recurso de implementação tardia (*forward declarations*)** e mudamos os atributos problemáticos dessas classes para ponteiros.
+
+## Referências
+
+- [O que é SOLID: O guia completo para você entender os 5 princípios da POO](https://link.medium.com/YyTdvfd3Mhb).
+
+- [Circular Dependencies in C++](https://pvigier.github.io/2018/02/09/dependency-graph.html).
+
+- [Two classes that refer to each other](https://stackoverflow.com/questions/994253/two-classes-that-refer-to-each-other).
+
+- [Resolving circular dependencies in C++](https://ewirch.github.io/2013/12/resolving-circular-dependencies.html#:~:text=A).
+
+- [Diamond Problem and Virtual Inheritance in C++](https://pencilprogrammer.com/cpp-tutorials/virtual-inheritance/).
+
+- [Dynamic_cast and static_cast in C++](https://www.tutorialspoint.com/dynamic-cast-and-static-cast-in-cplusplus).
+
+- [Getting “source type is not polymorphic” when trying to use dynamic_cast](https://stackoverflow.com/questions/15114093/getting-source-type-is-not-polymorphic-when-trying-to-use-dynamic-cast)
+
+- [Dynamic_cast giving segmentation fault](https://stackoverflow.com/questions/66256924/dynamic-cast-giving-segmentation-fault).
+
+- [Why can’t static_cast be used to down-cast when virtual inheritance is involved?](https://stackoverflow.com/questions/7484913/why-cant-static-cast-be-used-to-down-cast-when-virtual-inheritance-is-involved).
+
+- [Downcast in a diamond hierarchy](https://stackoverflow.com/questions/6044527/downcast-in-a-diamond-hierarchy).
