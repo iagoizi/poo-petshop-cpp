@@ -22,12 +22,15 @@ protected:
 public:
     Usuario(PetShop *petshop = NULL, string nome = "", int cargo = 0, string usuario = "", string senha = "", double salario = 0.0);
     virtual ~Usuario();
+
+    /*Getters dos atributos de Usuario*/
     string getNome();
     int getCargo();
     string getUsuario();
     string getSenha();
     double getSalario();
 
+    /*Setters dos atributos de Usuario*/
     void setNome(string);
     void setCargo(int);
     void setUsuario(string);
@@ -38,6 +41,7 @@ public:
     Cliente buscarCadastro(long cpf, bool *success);
     /*Se os usuários tiverem mesmo usuario, são iguais*/
     bool operator==(Usuario);
+    /*Sobrecarga do operador << para Usuario*/
     friend ostream &operator<<(ostream &os, const Usuario &usuario);
 };
 

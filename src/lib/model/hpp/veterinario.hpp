@@ -22,7 +22,8 @@ public:
     
     /*Lista todos os serviços ainda não realizados*/
     void listarOrdemServico();
-    /*Lista os clientes cadastros*/
+
+    /*Lista os clientes cadastrados*/
     void listarClientes();
 };
 
