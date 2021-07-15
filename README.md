@@ -40,8 +40,6 @@ Descrevendo detalhadamente cada classe da arquitetura implementada, temos:
 
 ![Diagrama dos usuários](https://i.imgur.com/PDsKfOI.jpg)
 
-No lugar de colocar a visualização dos dados e menus de cada usuário dentro do próprio usuário, decidimos colocar isso em classes separadas buscando seguir os príncipios SOLID. Dessa maneira, as classes Veterinario, Vendedor, Administrador e Usuario se tornam **mais reutilizáveis independentemente da camada de visualização dos dados** que coloquemos por cima delas. Isso facilitará, e muito, na hora de substituir a visualização de dados que temos no momento por algo mais interessante como uma interface gráfica.
-
 - **Menu:** Classe com funções mais genéricas que vão ser utiizadas pelos demais menus. Ela tem também um atributo chamado popUp que armazena uma mensagem a ser mostrada na tela para o usuário.
 
 - **MenuVendedor:** Classe responsável por imprimir na tela as operações acessíveis para o vendedor, fazendo as entradas e saídas necessárias para cumprir essas operações.
